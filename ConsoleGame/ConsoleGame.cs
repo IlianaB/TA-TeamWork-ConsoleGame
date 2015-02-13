@@ -17,6 +17,7 @@ namespace ConsoleGame
             while (true)
             {
                 ball.ChangePosition();
+                ball.CheckWallCollision();
                 ball.Draw('*');
 
                 Thread.Sleep(100);
