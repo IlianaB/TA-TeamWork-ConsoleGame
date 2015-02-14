@@ -18,6 +18,15 @@ namespace ConsoleGame
 
             while (true)
             {
+                // Move the pad
+                while (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey(true);
+                    pad.ChangePosition(key);
+                    pad.Draw('#');
+                }
+
+                // Move the ball
                 ball.ChangePosition();
                 ball.CheckWallCollision();
                 ball.Draw('*');
