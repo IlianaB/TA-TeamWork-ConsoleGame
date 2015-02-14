@@ -8,11 +8,13 @@ namespace ConsoleGame
         public const int windowWidth = 50;
         public const int windowHeight = 20;
 
+        private static Pad pad = new Pad(windowWidth / 2 + 1, windowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
 
         static void Main()
         {
             SetupGameField();
+            pad.Draw('#');
 
             while (true)
             {
