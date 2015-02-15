@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ball.cs" />
+    <Compile Include="Brick.cs" />
     <Compile Include="ConsoleGame.cs" />
     <Compile Include="Pad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
