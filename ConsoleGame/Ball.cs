@@ -21,7 +21,7 @@ namespace ConsoleGame
             this.topDirection = true;
         }
 
-        public void CheckWallCollision()
+        public void CheckWallCollision(Pad pad)
         {
             if (this.IsRightWallCollision())
             {
@@ -43,8 +43,15 @@ namespace ConsoleGame
 
             if (this.IsBottomWallCollision())
             {
-                this.topDirection = true;
-                this.y -= 2; 
+                if (pad.X <= this.x && pad.X + pad.Width >= this.x)
+                {
+                    this.topDirection = true;
+                    this.y -= 2;
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
             }
         }
 
@@ -69,7 +76,7 @@ namespace ConsoleGame
 
         public bool IsBottomWallCollision()
         {
-            return this.y == ConsoleGame.windowHeight;
+            return this.y == ConsoleGame.windowHeight - 1;
         }
 
         public bool IsTopWallCollision()

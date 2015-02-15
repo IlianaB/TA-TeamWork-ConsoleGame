@@ -9,6 +9,18 @@ namespace ConsoleGame
         private ConsoleColor color;
         private int width;
 
+        public int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+        public int Width
+        {
+            get { return width; }
+            set { width = value; }
+        }
+
         public Pad(int x, int y, ConsoleColor color)
         {
             this.width = 3;
