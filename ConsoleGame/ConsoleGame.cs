@@ -30,6 +30,7 @@ namespace ConsoleGame
 
                 // Move the ball
                 ball.ChangePosition();
+                ball.CheckBrickCollision(bricks);
                 ball.CheckWallCollision(pad);
                 ball.Draw('*');
 

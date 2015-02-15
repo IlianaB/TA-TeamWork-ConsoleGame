@@ -6,12 +6,20 @@ namespace ConsoleGame
     {
         private int x;
         private int y;
+        private bool isBroken;
         private ConsoleColor color;
+
+        public bool IsBroken
+        {
+            get { return isBroken; }
+            set { isBroken = value; }
+        }
 
         public Brick(int x, int y, ConsoleColor color)
         {
             this.x = x;
             this.y = y;
+            this.isBroken = false;
             this.color = color;
         }
 

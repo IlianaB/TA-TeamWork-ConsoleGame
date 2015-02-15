@@ -55,6 +55,20 @@ namespace ConsoleGame
             }
         }
 
+        public void CheckBrickCollision(Brick[,] bricks)
+        {
+            try
+            {
+                if (!bricks[this.y, this.x].IsBroken)
+                {
+                    bricks[this.y, this.x].IsBroken = true;
+                    this.topDirection = !this.topDirection;
+                    this.rightDirection = !this.rightDirection;
+                }
+            }
+            catch (Exception) { }
+        }
+
         public void ChangePosition()
         {
             this.oldX = this.x;
