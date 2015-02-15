@@ -8,6 +8,7 @@ namespace ConsoleGame
         private int y;
         private int oldX;
         private int oldY;
+        private bool stopDiagonal;
         private bool rightDirection;
         private bool topDirection;
         private ConsoleColor color;
@@ -17,6 +18,7 @@ namespace ConsoleGame
             this.x = x;
             this.y = y;
             this.color = color;
+            this.stopDiagonal = false;
             this.rightDirection = true;
             this.topDirection = true;
         }
@@ -47,6 +49,16 @@ namespace ConsoleGame
                 {
                     this.topDirection = true;
                     this.y -= 2;
+
+                    //Check which part of the pad is hit
+                    if (pad.X + 1 == this.x)
+                    {
+                        this.stopDiagonal = true;
+                    }
+                    else
+                    {
+                        this.stopDiagonal = false;
+                    }
                 }
                 else
                 {
@@ -74,7 +86,11 @@ namespace ConsoleGame
             this.oldX = this.x;
             this.oldY = this.y;
 
-            this.x = this.rightDirection ? this.x + 1 : this.x - 1;
+            if (!this.stopDiagonal)
+            {
+                this.x = this.rightDirection ? this.x + 1 : this.x - 1;
+            }
+
             this.y = this.topDirection ? this.y - 1 : this.y + 1;
         }
 
