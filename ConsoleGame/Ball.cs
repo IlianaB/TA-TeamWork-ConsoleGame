@@ -55,8 +55,14 @@ namespace ConsoleGame
                     {
                         this.stopDiagonal = true;
                     }
+                    else if (pad.X == this.x)
+                    {
+                        this.rightDirection = false;
+                        this.stopDiagonal = false;
+                    }
                     else
                     {
+                        this.rightDirection = true;
                         this.stopDiagonal = false;
                     }
                 }
