@@ -68,7 +68,7 @@ namespace ConsoleGame
                 }
                 else
                 {
-                    Environment.Exit(0);
+                    ConsoleGame.over = true;
                 }
             }
         }

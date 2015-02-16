@@ -7,6 +7,7 @@ namespace ConsoleGame
     {
         public const int windowWidth = 50;
         public const int windowHeight = 20;
+        public static bool over = false;
 
         private static Pad pad = new Pad(windowWidth / 2 + 1, windowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
@@ -34,6 +35,7 @@ namespace ConsoleGame
                 ball.CheckWallCollision(pad);
                 ball.Draw('*');
 
+                CheckGameOver();
                 Thread.Sleep(100);
             }
         }
@@ -57,6 +59,18 @@ namespace ConsoleGame
                     bricks[y, x] = new Brick(x, y, ConsoleColor.White);
                     bricks[y, x].Draw('@');
                 }
+            }
+        }
+
+        private static void CheckGameOver()
+        {
+            if (over)
+            {
+                string gameOver = "Game Over";
+                Console.Clear();
+                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2, windowHeight / 2);
+                Console.WriteLine(gameOver);
+                Environment.Exit(0);
             }
         }
     }
