@@ -1,4 +1,5 @@
 ﻿using System;
+//using System.Threading;
 
 namespace ConsoleGame
 {
@@ -23,7 +24,7 @@ namespace ConsoleGame
 
         public Pad(int x, int y, ConsoleColor color)
         {
-            this.width = 3;
+            this.width = 5;
             this.x = x;
             this.y = y;
             this.color = color;
@@ -31,6 +32,7 @@ namespace ConsoleGame
 
         public void ChangePosition(ConsoleKeyInfo key)
         {
+            
             if (key.Key == ConsoleKey.LeftArrow && this.x > 0)
             {
                 this.x--;
@@ -39,6 +41,21 @@ namespace ConsoleGame
             if (key.Key == ConsoleKey.RightArrow && this.x + this.width < ConsoleGame.windowWidth - 1)
             {
                 this.x++;
+            }
+
+            if (key.Key == ConsoleKey.P)
+            {
+                bool cont = false;
+                while (!cont)
+                {
+                    key = Console.ReadKey(true);
+                    if (key.Key == ConsoleKey.P)
+                    {
+                        cont = true;
+                        break;
+                    }
+                    
+                }
             }
         }
 

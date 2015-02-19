@@ -23,7 +23,7 @@ namespace ConsoleGame
             this.topDirection = true;
         }
 
-        public void CheckWallCollision(Pad pad)
+        public void CheckWallCollision(Pad pad, Player player)
         {
             if (this.IsRightWallCollision())
             {
@@ -51,7 +51,7 @@ namespace ConsoleGame
                     this.y -= 2;
 
                     //Check which part of the pad is hit
-                    if (pad.X + 1 == this.x)
+                    if (pad.X + pad.Width / 2 == this.x)
                     {
                         this.stopDiagonal = true;
                     }
@@ -68,17 +68,39 @@ namespace ConsoleGame
                 }
                 else
                 {
-                    ConsoleGame.over = true;
+                    if (player.Lives > 1)
+                    {
+                        player.Lives--;
+
+                        Console.SetCursorPosition(ConsoleGame.windowWidth / 2, ConsoleGame.windowHeight / 2);
+                        Console.Write("You have {0} out of {1}", player.Lives, 3);
+                        ConsoleKeyInfo key2 = Console.ReadKey(true);
+
+                        if (key2.Key == ConsoleKey.R)
+                        {
+                            this.x = ConsoleGame.windowWidth / 2 + 1;
+                            this.y = ConsoleGame.windowHeight - 1;
+                            pad.X = ConsoleGame.windowWidth / 2 + 1;
+                            this.topDirection = true;
+                            ConsoleGame.Play();
+                        }
+                    }
+                    else
+                    {
+                        ConsoleGame.over = true;
+                    }
+
                 }
             }
         }
 
-        public void CheckBrickCollision(Brick[,] bricks)
+        public void CheckBrickCollision(Brick[,] bricks, Player player)
         {
             try
             {
                 if (!bricks[this.y, this.x].IsBroken)
                 {
+                    player.Score++;
                     bricks[this.y, this.x].IsBroken = true;
                     this.topDirection = !this.topDirection;
                     this.rightDirection = !this.rightDirection;
