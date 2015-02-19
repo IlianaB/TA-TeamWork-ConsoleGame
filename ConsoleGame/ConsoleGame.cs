@@ -11,7 +11,7 @@ namespace ConsoleGame
 
         private static Pad pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
-        private static Brick[,] bricks = new Brick[4, windowWidth];
+        private static Brick[,] bricks = new Brick[6, windowWidth];
         private static Player player = new Player(0, 3);
 
         static void Main()
@@ -26,7 +26,7 @@ namespace ConsoleGame
         {
             Console.Clear();
             pad.Draw('#');
-            DrawBrick();
+            clearTop3Rows();
 
             while (true)
             {
@@ -53,7 +53,7 @@ namespace ConsoleGame
         {
             for (int y = 0; y < bricks.GetLength(0); y++)
             {
-                for (int x = 0; x < bricks.GetLength(1); x++)
+                for (int x = 0; x < bricks.GetLength(1)-1; x++)
                 {
                     if (bricks[y, x].IsBroken == false)
                     {
@@ -73,6 +73,19 @@ namespace ConsoleGame
             Console.CursorVisible = false;
         }
 
+        private static void clearTop3Rows()
+        {
+            for (int row = 0; row <= 2; row++)
+            {
+                for (int col = 0; col < bricks.GetLength(1); col++)
+                {
+                    bricks[row, col].IsBroken = true;
+                }
+            }
+            DrawBrick();
+        }
+
+
         private static void GenerateBricks()
         {
             for (int y = 0; y < bricks.GetLength(0); y++)
@@ -88,10 +101,15 @@ namespace ConsoleGame
         {
             if (over)
             {
-                string gameOver = "Game Over";
+                string gameOver = "G A M E   O V E R";
                 Console.Clear();
                 Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2, windowHeight / 2);
                 Console.WriteLine(gameOver);
+                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2 -1, windowHeight / 2 +2);
+                Console.WriteLine("Your high score is {0} ", player.Score);
+                Console.WriteLine("\n r - restart , n - new game , h - view highscores");
+                player.Score = 0;
+                //TODO  -  tuk trqbva da se napi6e vryzkata s faila
                 Environment.Exit(0);
             }
         }

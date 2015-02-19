@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace ConsoleGame
 {
@@ -68,22 +69,19 @@ namespace ConsoleGame
                 }
                 else
                 {
-                    if (player.Lives > 1)
+                    if (player.Lives > 0)
                     {
                         player.Lives--;
 
                         Console.SetCursorPosition(ConsoleGame.windowWidth / 2, ConsoleGame.windowHeight / 2);
                         Console.Write("You have {0} out of {1}", player.Lives, 3);
-                        ConsoleKeyInfo key2 = Console.ReadKey(true);
-
-                        if (key2.Key == ConsoleKey.R)
-                        {
-                            this.x = ConsoleGame.windowWidth / 2 + 1;
+                        Thread.Sleep(1500);
+                            this.x = ConsoleGame.windowWidth / 2;
                             this.y = ConsoleGame.windowHeight - 1;
-                            pad.X = ConsoleGame.windowWidth / 2 + 1;
+                            pad.X = ConsoleGame.windowWidth / 2 - pad.Width/2 ;
                             this.topDirection = true;
                             ConsoleGame.Play();
-                        }
+                        
                     }
                     else
                     {
