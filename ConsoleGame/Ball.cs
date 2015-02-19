@@ -77,7 +77,7 @@ namespace ConsoleGame
                         Console.Write("You have {0} out of {1}", player.Lives, 3);
                         Thread.Sleep(1500);
                             this.x = ConsoleGame.windowWidth / 2;
-                            this.y = ConsoleGame.windowHeight - 1;
+                            this.y = ConsoleGame.windowHeight - 2;
                             pad.X = ConsoleGame.windowWidth / 2 - pad.Width/2 ;
                             this.topDirection = true;
                             ConsoleGame.Play();
@@ -97,14 +97,22 @@ namespace ConsoleGame
             try
             {
                 if (!bricks[this.y, this.x].IsBroken)
-                {
+                {                   
                     player.Score++;
+                    printScore(player);
                     bricks[this.y, this.x].IsBroken = true;
                     this.topDirection = !this.topDirection;
                     this.rightDirection = !this.rightDirection;
                 }
             }
             catch (Exception) { }
+        }
+
+
+        private static void printScore(Player player)
+        {
+            Console.SetCursorPosition(Console.WindowWidth/2-4, 0);
+            Console.WriteLine("Score: {0}" , player.Score);
         }
 
         public void ChangePosition()
