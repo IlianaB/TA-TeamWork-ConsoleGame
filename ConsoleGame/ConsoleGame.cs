@@ -103,9 +103,9 @@ namespace ConsoleGame
             {
                 string gameOver = "G A M E   O V E R";
                 Console.Clear();
-                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2, windowHeight / 2);
+                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2, windowHeight / 3);
                 Console.WriteLine(gameOver);
-                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2 -1, windowHeight / 2 +2);
+                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2 -1, windowHeight / 3 +2);
                 Console.WriteLine("Your high score is {0} ", player.Score);
                 Console.WriteLine("\n r - restart , n - new game , h - view highscores");
                 player.Score = 0;

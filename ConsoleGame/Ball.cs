@@ -46,10 +46,12 @@ namespace ConsoleGame
 
             if (this.IsBottomWallCollision())
             {
+
+
                 if (pad.X <= this.x && pad.X + pad.Width >= this.x)
                 {
                     this.topDirection = true;
-                    this.y -= 2;
+                    this.y -= 1;
 
                     //Check which part of the pad is hit
                     if (pad.X + pad.Width / 2 == this.x)
@@ -73,15 +75,15 @@ namespace ConsoleGame
                     {
                         player.Lives--;
 
-                        Console.SetCursorPosition(ConsoleGame.windowWidth / 2, ConsoleGame.windowHeight / 2);
-                        Console.Write("You have {0} out of {1}", player.Lives, 3);
+                        Console.SetCursorPosition(ConsoleGame.windowWidth / 3 - 1, ConsoleGame.windowHeight / 2);
+                        Console.Write("You have {0} lives left", player.Lives);
                         Thread.Sleep(1500);
-                            this.x = ConsoleGame.windowWidth / 2;
-                            this.y = ConsoleGame.windowHeight - 2;
-                            pad.X = ConsoleGame.windowWidth / 2 - pad.Width/2 ;
-                            this.topDirection = true;
-                            ConsoleGame.Play();
-                        
+                        this.x = ConsoleGame.windowWidth / 2;
+                        this.y = ConsoleGame.windowHeight - 2;
+                        pad.X = ConsoleGame.windowWidth / 2 - pad.Width / 2;
+                        this.topDirection = true;
+                        ConsoleGame.Play();
+
                     }
                     else
                     {
