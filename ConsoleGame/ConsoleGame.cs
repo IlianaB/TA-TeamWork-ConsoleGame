@@ -117,12 +117,38 @@ namespace ConsoleGame
                 Console.Clear();
                 Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2, windowHeight / 3);
                 Console.WriteLine(gameOver);
-                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2 -1, windowHeight / 3 +2);
+                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2 - 1, windowHeight / 3 + 2);
                 Console.WriteLine("Your high score is {0} ", player.Score);
-                Console.WriteLine("\n r - restart , n - new game , h - view highscores");
+                Console.WriteLine("\n r- restart, v- view highscores, i- instructions\n\n\t\t   ESC - exit");
                 player.Score = 0;
                 //TODO  -  tuk trqbva da se napi6e vryzkata s faila
-                Environment.Exit(0);
+
+                ConsoleKeyInfo waitedKey = Console.ReadKey(true);
+                if (waitedKey.Key == ConsoleKey.R)
+                {
+                    over = false;
+                    pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
+                    ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
+                    player = new Player(0, 3);
+                    Console.Clear();
+                    Main();
+                }
+                else if (waitedKey.Key == ConsoleKey.Escape)
+                {
+                    Environment.Exit(0);
+                }
+                //else if (waitedKey.Key == ConsoleKey.I)
+                //{
+                    // MAKE CONNECTION TO THE FILE
+                //}
+                //else if (waitedKey.Key == ConsoleKey.I)        // SO FAR TESTING IS PROBLEMATIC!
+                //{
+                //    Console.Clear();
+                //    Console.ForegroundColor = ConsoleColor.Yellow;
+                //    Console.SetCursorPosition(Console.WindowWidth / 2 - 6, 1);
+                //    Console.Write("INSTRUCTIONS:");
+                //}                
+                
             }
         }
     }
