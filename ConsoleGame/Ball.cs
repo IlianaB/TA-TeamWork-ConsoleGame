@@ -126,7 +126,7 @@ namespace ConsoleGame
 
         public static void printScore(Player player)
         {
-            Console.SetCursorPosition(Console.WindowWidth/2-4, 0);
+            Console.SetCursorPosition((Console.WindowWidth/2)-9, 0);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Score: {0} Level: {1}" , player.Score, ConsoleGame.gameLevel);
         }

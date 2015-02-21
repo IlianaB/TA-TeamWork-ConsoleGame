@@ -123,9 +123,9 @@ namespace ConsoleGame
                 Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2 - 1, windowHeight / 3 + 2);
                 Console.WriteLine("Your high score is {0} ", player.Score);
                 Console.WriteLine("\n r- restart, v- view highscores, i- instructions\n\n\t\t   ESC - exit");
-                player.Score = 0;
+               
                 //TODO  -  tuk trqbva da se napi6e vryzkata s faila
-
+                player.Score = 0;
                 ConsoleKeyInfo waitedKey = Console.ReadKey(true);
                 if (waitedKey.Key == ConsoleKey.R)
                 {
@@ -139,18 +139,39 @@ namespace ConsoleGame
                 else if (waitedKey.Key == ConsoleKey.Escape)
                 {
                     Environment.Exit(0);
-                }
-                //else if (waitedKey.Key == ConsoleKey.I)
-                //{
-                    // MAKE CONNECTION TO THE FILE
-                //}
-                //else if (waitedKey.Key == ConsoleKey.I)        // SO FAR TESTING IS PROBLEMATIC!
-                //{
-                //    Console.Clear();
-                //    Console.ForegroundColor = ConsoleColor.Yellow;
-                //    Console.SetCursorPosition(Console.WindowWidth / 2 - 6, 1);
-                //    Console.Write("INSTRUCTIONS:");
-                //}                
+                }               
+                else if (waitedKey.Key == ConsoleKey.I)      
+                {                   
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 7, 1);
+                    Console.Write("INSTRUCTIONS");                   
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 6, 4);
+                    Console.WriteLine("Directions:");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 17, 6);
+                    Console.WriteLine(" <- key  - pad direction Left");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 17, 8);
+                    Console.WriteLine(" -> key  - pad direction Right");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 6, 11);
+                    Console.WriteLine("HOW TO PLAY:");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 13);
+                    Console.WriteLine("Move the pad in order to navigate ");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 14);
+                    Console.WriteLine("the ball across the playfield and");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 14, 15);
+                    Console.WriteLine("try to coolect all the bricks");
+                    Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 18);
+                    Console.WriteLine("PRESS ANY KEY TO RESTART");                    
+                    ConsoleKeyInfo keyToReturnToGame = Console.ReadKey(true);
+                    player.Score = 0;
+                    over = false;
+                    pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
+                    ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
+                    player = new Player(0, 3);
+                    Console.Clear();
+                    Main();
+
+                }                
                 
             }
         }
