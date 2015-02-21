@@ -25,6 +25,9 @@ namespace ConsoleGame
         public static void Play()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Ball.printScore(player);
+            Console.ForegroundColor = ConsoleColor.White;
             pad.Draw('#');
             clearTop3Rows();
 
@@ -53,6 +56,15 @@ namespace ConsoleGame
         {
             for (int y = 0; y < bricks.GetLength(0); y++)
             {
+                if (y == 1)
+                {
+                    for (int x = 0; x < bricks.GetLength(1)-1; x++)
+                    {
+                        
+                            bricks[y, x].Draw('-');
+                        
+                    }
+                }
                 for (int x = 0; x < bricks.GetLength(1)-1; x++)
                 {
                     if (bricks[y, x].IsBroken == false)

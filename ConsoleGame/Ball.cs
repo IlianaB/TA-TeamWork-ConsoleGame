@@ -74,9 +74,17 @@ namespace ConsoleGame
                     if (player.Lives > 0)
                     {
                         player.Lives--;
-
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.SetCursorPosition(ConsoleGame.windowWidth / 3 - 1, ConsoleGame.windowHeight / 2);
-                        Console.Write("You have {0} lives left", player.Lives);
+                        if (player.Lives == 1)
+                        {
+                            Console.Write("You have {0} life left", player.Lives);
+                        }
+                        else
+                        {
+                            Console.Write("You have {0} lives left", player.Lives);
+                        }
+                        Console.ForegroundColor = ConsoleColor.White;
                         Thread.Sleep(1500);
                         this.x = ConsoleGame.windowWidth / 2;
                         this.y = ConsoleGame.windowHeight - 2;
@@ -111,7 +119,7 @@ namespace ConsoleGame
         }
 
 
-        private static void printScore(Player player)
+        public static void printScore(Player player)
         {
             Console.SetCursorPosition(Console.WindowWidth/2-4, 0);
             Console.WriteLine("Score: {0}" , player.Score);
