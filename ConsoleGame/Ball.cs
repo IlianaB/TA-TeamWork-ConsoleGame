@@ -109,6 +109,12 @@ namespace ConsoleGame
                 if (!bricks[this.y, this.x].IsBroken)
                 {                   
                     player.Score++;
+                    if (player.Score % 10 == 0 && player.Score != 0)
+                    {
+                        ConsoleGame.gameLevel++;
+                        ConsoleGame.gameSpeed = ConsoleGame.InitialGameSpeed - ConsoleGame.gameLevel * 10;
+                    }
+
                     printScore(player);
                     bricks[this.y, this.x].IsBroken = true;
                     this.topDirection = !this.topDirection;
@@ -122,7 +128,7 @@ namespace ConsoleGame
         {
             Console.SetCursorPosition(Console.WindowWidth/2-4, 0);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Score: {0}" , player.Score);
+            Console.WriteLine("Score: {0} Level: {1}" , player.Score, ConsoleGame.gameLevel);
         }
 
         public void ChangePosition()

@@ -8,6 +8,9 @@ namespace ConsoleGame
         public const int windowWidth = 50;
         public const int windowHeight = 21;
         public static bool over = false;
+        public const int InitialGameSpeed = 100;
+        public static int gameSpeed = InitialGameSpeed;
+        public static int gameLevel = 0;
 
         private static Pad pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
@@ -48,7 +51,7 @@ namespace ConsoleGame
                 ball.Draw('*');
 
                 CheckGameOver();
-                Thread.Sleep(100);
+                Thread.Sleep(gameSpeed);
             }
         }
 
