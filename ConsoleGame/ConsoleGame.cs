@@ -14,7 +14,7 @@ namespace ConsoleGame
 
         private static Pad pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
-        private static Brick[,] bricks = new Brick[6, windowWidth];
+        private static Brick[,] bricks = new Brick[7, windowWidth];
         private static Player player = new Player(0, 4);
 
         static void Main()
@@ -59,7 +59,7 @@ namespace ConsoleGame
         {
             for (int y = 0; y < bricks.GetLength(0); y++)
             {
-                if (y == 1)
+                if (y == 2)
                 {
                     for (int x = 0; x < bricks.GetLength(1)-1; x++)
                     {
