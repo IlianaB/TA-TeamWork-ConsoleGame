@@ -71,7 +71,7 @@ namespace ConsoleGame
                 }
                 else
                 {
-                    if (player.Lives > 0)
+                    if (player.Lives > 1)
                     {
                         player.Lives--;
                         Console.ForegroundColor = ConsoleColor.Red;
