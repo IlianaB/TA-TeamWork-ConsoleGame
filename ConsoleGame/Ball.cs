@@ -112,7 +112,7 @@ namespace ConsoleGame
                     if (player.Score % 10 == 0 && player.Score != 0)
                     {
                         ConsoleGame.gameLevel++;
-                        ConsoleGame.gameSpeed = ConsoleGame.InitialGameSpeed - ConsoleGame.gameLevel * 10;
+                        ConsoleGame.gameSpeed = ConsoleGame.InitialGameSpeed - ConsoleGame.gameLevel * 6;
                     }
 
                     printScore(player);
