@@ -31,7 +31,7 @@ namespace ConsoleGame
             Console.ForegroundColor = ConsoleColor.Red;
             Ball.printScore(player);
             Console.ForegroundColor = ConsoleColor.White;
-            pad.Draw('#');
+            pad.Draw('▀');
             clearTop3Rows();
 
             while (true)
@@ -41,7 +41,7 @@ namespace ConsoleGame
                 {
                     ConsoleKeyInfo key = Console.ReadKey(true);
                     pad.ChangePosition(key);
-                    pad.Draw('#');
+                    pad.Draw('▀');
                 }
 
                 // Move the ball
