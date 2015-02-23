@@ -21,8 +21,43 @@ namespace ConsoleGame
         {
             SetupGameField();
             GenerateBricks();
+            DrawMenu();
 
-            Play();
+            do
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.P)
+                {
+                    Play();
+                }
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    Environment.Exit(0);
+                }
+            } while (true);
+        }
+
+        private static void DrawMenu()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            string[] menu = new string[5];
+            menu[0] = "Play";
+            menu[1] = "Highscores";
+            menu[2] = "Instructions";
+            menu[3] = "About";
+            menu[4] = "Exit";
+
+            int maxLength = menu[2].Length;
+            int startLeft = windowWidth / 2 - maxLength / 2;
+            int startTop = windowHeight / 2 - menu.Length;
+
+            for (int i = 0; i < menu.Length; i++)
+            {
+                Console.SetCursorPosition(startLeft, startTop + 2 * i);
+                Console.Write(menu[i]);
+            }
         }
 
         public static void Play()
