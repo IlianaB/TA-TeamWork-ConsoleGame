@@ -66,8 +66,7 @@ namespace ConsoleGame
                     {
                         if (player.Lives > 1)
                         {
-                            this.x += 1;  
-                            this.y += 1; 
+                            Draw('*');
                             player.Lives--;
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.SetCursorPosition(ConsoleGame.windowWidth / 3 - 1, ConsoleGame.windowHeight / 2);
@@ -90,6 +89,12 @@ namespace ConsoleGame
                         }
                         else
                         {
+                            Draw('*');
+                            string gameOver = "G A M E   O V E R";
+                            Console.SetCursorPosition(ConsoleGame.windowWidth / 2 - gameOver.Length / 2, ConsoleGame.windowHeight / 2);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(gameOver);
+                            Thread.Sleep(1000);
                             ConsoleGame.over = true;
                         }
 
@@ -97,7 +102,7 @@ namespace ConsoleGame
                 }
                 else
                 {
-                      if (this.y == Console.WindowHeight -1 && this.x == pad.X+4)
+                      if (this.y == Console.WindowHeight -1 && this.x == pad.X + 4)
                     {
                         this.topDirection = true;
                         rightDirection = true;
@@ -115,8 +120,7 @@ namespace ConsoleGame
                       {
                           if (player.Lives > 1)
                           {
-                              this.x -= 1;
-                              this.y += 1;
+                              Draw('*');
                               player.Lives--;
                               Console.ForegroundColor = ConsoleColor.Red;
                               Console.SetCursorPosition(ConsoleGame.windowWidth / 3 - 1, ConsoleGame.windowHeight / 2);
@@ -139,6 +143,12 @@ namespace ConsoleGame
                           }
                           else
                           {
+                              Draw('*');
+                              string gameOver = "G A M E   O V E R";
+                              Console.SetCursorPosition(ConsoleGame.windowWidth / 2 - gameOver.Length / 2, ConsoleGame.windowHeight / 2);
+                              Console.ForegroundColor = ConsoleColor.Red;
+                              Console.WriteLine(gameOver);
+                              Thread.Sleep(1000);
                               ConsoleGame.over = true;
                           }
                       }
