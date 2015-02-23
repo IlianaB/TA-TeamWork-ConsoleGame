@@ -15,7 +15,7 @@ namespace ConsoleGame
         private static Pad pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
         private static Brick[,] bricks = new Brick[6, windowWidth];
-        private static Player player = new Player(0, 3);
+        private static Player player = new Player(0, 4);
 
         static void Main()
         {
@@ -132,7 +132,7 @@ namespace ConsoleGame
                     over = false;
                     pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
                     ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
-                    player = new Player(0, 3);
+                    player = new Player(0, 4);
                     Console.Clear();
                     Main();
                 }
@@ -167,7 +167,7 @@ namespace ConsoleGame
                     over = false;
                     pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
                     ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
-                    player = new Player(0, 3);
+                    player = new Player(0, 4);
                     Console.Clear();
                     Main();
 
