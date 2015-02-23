@@ -162,6 +162,7 @@ namespace ConsoleGame
                     printScore(player);
                     bricks[this.y, this.x].IsBroken = true;
                     this.topDirection = !this.topDirection;
+                    this.rightDirection = !this.rightDirection;
                 }
             }
             catch (Exception) { }
