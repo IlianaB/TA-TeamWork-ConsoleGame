@@ -126,7 +126,7 @@ namespace ConsoleGame
                
                 //TODO  -  tuk trqbva da se napi6e vryzkata s faila
                 player.Score = 0;
-                gameLevel = 0;
+                gameLevel = 0;                
                 ConsoleKeyInfo waitedKey = Console.ReadKey(true);
                 if (waitedKey.Key == ConsoleKey.R)
                 {
@@ -143,7 +143,7 @@ namespace ConsoleGame
                 }               
                 else if (waitedKey.Key == ConsoleKey.I)      
                 {                   
-                    Console.Clear();
+                    Console.Clear();                  
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.SetCursorPosition(Console.WindowWidth / 2 - 7, 1);
                     Console.Write("INSTRUCTIONS");                   

@@ -104,7 +104,7 @@ namespace ConsoleGame
                         this.y = y - 1;
                         this.x = x +1;
                     }
-                      else if (this.y == Console.WindowHeight - 1 && (this.x == pad.X + 3) || (this.x == pad.X + 2) || (this.x == pad.X + 1) || (this.x == pad.X))
+                      else if (this.y == Console.WindowHeight - 1 && (this.x == pad.X + 3) || (this.x == pad.X + 2) || (this.x == pad.X + 1) || (this.x == pad.X) || (this.x == pad.X-1))
                       {
                           this.topDirection = true;
                           rightDirection = false;
