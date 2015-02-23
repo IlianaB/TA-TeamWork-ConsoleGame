@@ -129,6 +129,9 @@ namespace ConsoleGame
             Console.SetCursorPosition((Console.WindowWidth/2)-9, 0);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Score: {0} Level: {1}" , player.Score, ConsoleGame.gameLevel);
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 13, 1);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("Press P to pause the game.");
         }
 
         public void ChangePosition()
