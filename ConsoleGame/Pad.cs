@@ -65,10 +65,12 @@ namespace ConsoleGame
 
             //Clear old pad if any
             Console.SetCursorPosition(0, this.y);
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.Write(new string(' ', ConsoleGame.windowWidth - 1));
 
             //Draw new pad
             Console.SetCursorPosition(this.x, this.y);
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write(new string(symbol, this.width));
         }
     }
