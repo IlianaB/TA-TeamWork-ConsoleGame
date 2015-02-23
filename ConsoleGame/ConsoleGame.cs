@@ -10,7 +10,7 @@ namespace ConsoleGame
         public static bool over = false;
         public const int InitialGameSpeed = 100;
         public static int gameSpeed = InitialGameSpeed;
-        public static int gameLevel = 0;
+        public static int gameLevel = 1;
 
         private static Pad pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
@@ -126,6 +126,7 @@ namespace ConsoleGame
                
                 //TODO  -  tuk trqbva da se napi6e vryzkata s faila
                 player.Score = 0;
+                gameLevel = 0;
                 ConsoleKeyInfo waitedKey = Console.ReadKey(true);
                 if (waitedKey.Key == ConsoleKey.R)
                 {
