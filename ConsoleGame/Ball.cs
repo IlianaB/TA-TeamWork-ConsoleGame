@@ -66,36 +66,12 @@ namespace ConsoleGame
                     {
                         if (player.Lives > 1)
                         {
-                            Draw('*');
-                            player.Lives--;
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.SetCursorPosition(ConsoleGame.windowWidth / 3 - 1, ConsoleGame.windowHeight / 2);
-                            if (player.Lives == 1)
-                            {
-                                Console.Write("You have {0} life left", player.Lives);
-                            }
-                            else
-                            {
-                                Console.Write("You have {0} lives left", player.Lives);
-                            }
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Thread.Sleep(1500);
-                            this.x = ConsoleGame.windowWidth / 2;
-                            this.y = ConsoleGame.windowHeight - 2;
-                            pad.X = ConsoleGame.windowWidth / 2 - pad.Width / 2;
-                            this.topDirection = true;
-                            ConsoleGame.Play();
+                            DrawLostLivesScreen(pad, player);
 
                         }
                         else
                         {
-                            Draw('*');
-                            string gameOver = "G A M E   O V E R";
-                            Console.SetCursorPosition(ConsoleGame.windowWidth / 2 - gameOver.Length / 2, ConsoleGame.windowHeight / 2);
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine(gameOver);
-                            Thread.Sleep(1000);
-                            ConsoleGame.over = true;
+                            DrawGameOverScreen();
                         }
 
                     }
@@ -120,40 +96,49 @@ namespace ConsoleGame
                     {
                         if (player.Lives > 1)
                         {
-                            Draw('*');
-                            player.Lives--;
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.SetCursorPosition(ConsoleGame.windowWidth / 3 - 1, ConsoleGame.windowHeight / 2);
-                            if (player.Lives == 1)
-                            {
-                                Console.Write("You have {0} life left", player.Lives);
-                            }
-                            else
-                            {
-                                Console.Write("You have {0} lives left", player.Lives);
-                            }
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Thread.Sleep(1500);
-                            this.x = ConsoleGame.windowWidth / 2;
-                            this.y = ConsoleGame.windowHeight - 2;
-                            pad.X = ConsoleGame.windowWidth / 2 - pad.Width / 2;
-                            this.topDirection = true;
-                            ConsoleGame.Play();
-
+                            DrawLostLivesScreen(pad, player);
                         }
                         else
                         {
-                            Draw('*');
-                            string gameOver = "G A M E   O V E R";
-                            Console.SetCursorPosition(ConsoleGame.windowWidth / 2 - gameOver.Length / 2, ConsoleGame.windowHeight / 2);
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine(gameOver);
-                            Thread.Sleep(1000);
-                            ConsoleGame.over = true;
+                            DrawGameOverScreen();
                         }
                     }
                 }
             }
+        }
+
+        private void DrawLostLivesScreen(Pad pad, Player player)
+        {
+            Draw('*');
+            player.Lives--;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(ConsoleGame.windowWidth / 3 - 1, ConsoleGame.windowHeight / 2);
+            if (player.Lives == 1)
+            {
+                Console.Write("You have {0} life left", player.Lives);
+            }
+            else
+            {
+                Console.Write("You have {0} lives left", player.Lives);
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+            Thread.Sleep(1500);
+            this.x = ConsoleGame.windowWidth / 2;
+            this.y = ConsoleGame.windowHeight - 2;
+            pad.X = ConsoleGame.windowWidth / 2 - pad.Width / 2;
+            this.topDirection = true;
+            ConsoleGame.Play();
+        }
+
+        private void DrawGameOverScreen()
+        {
+            Draw('*');
+            string gameOver = "G A M E   O V E R";
+            Console.SetCursorPosition(ConsoleGame.windowWidth / 2 - gameOver.Length / 2, ConsoleGame.windowHeight / 2);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(gameOver);
+            Thread.Sleep(1000);
+            ConsoleGame.over = true;
         }
 
         public void CheckBrickCollision(Brick[,] bricks, Player player)
