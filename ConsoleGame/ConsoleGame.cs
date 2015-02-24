@@ -56,7 +56,8 @@ namespace ConsoleGame
             int maxLength = menu[2].Length;
             int startLeft = windowWidth / 2 - maxLength / 2;
             int startTop = windowHeight / 2 - menu.Length;
-             int currentSelectedRole = startTop;
+             int currentSelectedItem = 0;
+             bool selected = false;
             for (int i = 0; i < menu.Length; i++)
             {
                 Console.SetCursorPosition(startLeft, startTop + 2 * i);
@@ -69,34 +70,86 @@ namespace ConsoleGame
                 lines[i] = false;
             }
             lines[0] = true;
-
-            for (int i = 0; i < lines.Length; i++)
+            redrawOptions(startTop, startLeft, ref lines, ref menu);
+           ConsoleKeyInfo chosenLine = new ConsoleKeyInfo();
+            while (!selected)
             {
-                if (lines[i] == true)
+                chosenLine = Console.ReadKey(true);
+                if (lines[0] == false && chosenLine.Key == ConsoleKey.UpArrow)
+                {
+                    lines[currentSelectedItem] = false;
+                    currentSelectedItem--;
+                    lines[currentSelectedItem] = true;
+                    
+                }
+                else if (lines[4] == false && chosenLine.Key == ConsoleKey.DownArrow)
+                {
+                    lines[currentSelectedItem] = false;
+                    currentSelectedItem++;
+                    lines[currentSelectedItem] = true;
+                }
+                else if (chosenLine.Key == ConsoleKey.Enter)
+                {
+                    selected = true;
+                    break;
+                   
+                }
+                redrawOptions(startTop, startLeft,ref lines, ref menu);
+            }
+            goIntoSelectedMenu(ref lines);
+        }
+
+        private static void  goIntoSelectedMenu(ref bool[] array)
+        {
+            if (array[0] == true)
+            {
+                Console.Clear();
+                Play();
+            }
+            else if (array[1] == true)
+            {
+                //Vryzka s faila
+            }
+            else if (array[2] == true)
+            {
+                DrawInstructions();
+            }
+            else if (array[3] == true)
+            {
+                //About
+            }
+            else if (array[4] == true)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(windowHeight / 2, 10 );                
+                Environment.Exit(0);
+            }
+        }
+
+        private static void redrawOptions(int top,int left,ref bool[] array,ref string[] arrayStr)
+        {
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == true)
                 {
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.SetCursorPosition(startLeft, startTop + 2 * i);
-                    Console.Write(menu[i]);
-                    Console.SetCursorPosition(startLeft - 3, startTop + 2 * i);
+                    Console.SetCursorPosition(left, top + 2 * i);
+                    Console.Write(arrayStr[i]);
+                    Console.SetCursorPosition(left - 3, top + 2 * i);
                     Console.Write(">>");
-                    
-
-
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.SetCursorPosition(startLeft, startTop + 2 * i);
-                    Console.Write(menu[i]);
-                    Console.SetCursorPosition(startLeft - 3, startTop + 2 * i);
+                    Console.SetCursorPosition(left, top + 2 * i);
+                    Console.Write(arrayStr[i]);
+                    Console.SetCursorPosition(left - 3, top + 2 * i);
                     Console.Write("  ");
                 }
             }
-
-            // start top   do start top + 8  prez 1
-
-
         }
 
         public static void Play()
@@ -174,7 +227,6 @@ namespace ConsoleGame
             DrawBrick();
         }
 
-
         private static void GenerateBricks()
         {
             for (int y = 0; y < bricks.GetLength(0); y++)
@@ -242,7 +294,7 @@ namespace ConsoleGame
             Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 18);
             Console.WriteLine("PRESS ANY KEY TO START");
             ConsoleKeyInfo keyToReturnToGame = Console.ReadKey(true);
-            Main();
+            Play();
         }
 
         private static void ResetGame()
