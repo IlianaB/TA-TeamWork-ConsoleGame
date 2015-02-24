@@ -44,7 +44,7 @@ namespace ConsoleGame
 
         private static void DrawMenu()
         {
-            Console.Clear();
+            Console.Clear();           
             Console.ForegroundColor = ConsoleColor.White;
             string[] menu = new string[5];
             menu[0] = "Play";
@@ -56,12 +56,47 @@ namespace ConsoleGame
             int maxLength = menu[2].Length;
             int startLeft = windowWidth / 2 - maxLength / 2;
             int startTop = windowHeight / 2 - menu.Length;
-
+             int currentSelectedRole = startTop;
             for (int i = 0; i < menu.Length; i++)
             {
                 Console.SetCursorPosition(startLeft, startTop + 2 * i);
                 Console.Write(menu[i]);
             }
+
+            bool[] lines = new bool[5];
+            for (int i = 0; i < lines.Length; i++)
+            {
+                lines[i] = false;
+            }
+            lines[0] = true;
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i] == true)
+                {
+
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.SetCursorPosition(startLeft, startTop + 2 * i);
+                    Console.Write(menu[i]);
+                    Console.SetCursorPosition(startLeft - 3, startTop + 2 * i);
+                    Console.Write(">>");
+                    
+
+
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(startLeft, startTop + 2 * i);
+                    Console.Write(menu[i]);
+                    Console.SetCursorPosition(startLeft - 3, startTop + 2 * i);
+                    Console.Write("  ");
+                }
+            }
+
+            // start top   do start top + 8  prez 1
+
+
         }
 
         public static void Play()
@@ -205,7 +240,7 @@ namespace ConsoleGame
             Console.SetCursorPosition(Console.WindowWidth / 2 - 14, 15);
             Console.WriteLine("try to coolect all the bricks");
             Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 18);
-            Console.WriteLine("PRESS ANY KEY TO RESTART");
+            Console.WriteLine("PRESS ANY KEY TO START");
             ConsoleKeyInfo keyToReturnToGame = Console.ReadKey(true);
             Main();
         }
