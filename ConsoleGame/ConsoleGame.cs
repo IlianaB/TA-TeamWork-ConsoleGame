@@ -135,14 +135,14 @@ namespace ConsoleGame
             {
                 if (y == 2)
                 {
-                    for (int x = 0; x < bricks.GetLength(1)-1; x++)
+                    for (int x = 0; x < bricks.GetLength(1) - 1; x++)
                     {
-                        
-                            bricks[y, x].Draw('-');
-                        
+
+                        bricks[y, x].Draw('-');
+
                     }
                 }
-                for (int x = 0; x < bricks.GetLength(1)-1; x++)
+                for (int x = 0; x < bricks.GetLength(1) - 1; x++)
                 {
                     if (bricks[y, x].IsBroken == false)
                     {
@@ -197,7 +197,7 @@ namespace ConsoleGame
                 Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2 - 1, windowHeight / 3 + 2);
                 Console.WriteLine("Your high score is {0} ", player.Score);
                 Console.WriteLine("\n r- restart, v- view highscores, i- instructions\n\n\t\t   ESC - exit");
-               
+
                 //TODO  -  tuk trqbva da se napi6e vryzkata s faila
                 do
                 {
@@ -214,8 +214,8 @@ namespace ConsoleGame
                     {
                         DrawInstructions();
                         ResetGame();
-                    }      
-                } while (true);       
+                    }
+                } while (true);
             }
         }
 
