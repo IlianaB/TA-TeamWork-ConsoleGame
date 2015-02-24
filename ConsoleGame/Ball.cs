@@ -219,7 +219,7 @@ namespace ConsoleGame
 
         public bool IsTopWallCollision()
         {
-            return this.y == +1;
+            return this.y == +2;
         }
 
         public void Draw(char symbol)
