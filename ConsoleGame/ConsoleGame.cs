@@ -108,7 +108,8 @@ namespace ConsoleGame
             }
             else if (array[1] == true)
             {
-                //Vryzka s faila
+                Console.Clear();
+                Console.WriteLine("Tova ne e gotovo oshte,kolegi :D");  // TODO
             }
             else if (array[2] == true)
             {
@@ -116,7 +117,8 @@ namespace ConsoleGame
             }
             else if (array[3] == true)
             {
-                //About
+                Console.Clear();
+                Console.WriteLine("Tova ne e gotovo oshte,kolegi :D");  //TODO
             }
             else if (array[4] == true)
             {
@@ -241,32 +243,31 @@ namespace ConsoleGame
         private static void CheckGameOver()
         {
             if (over)
-            {
-                string gameOver = "G A M E   O V E R";
+            {               
                 Console.Clear();
-                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2, windowHeight / 3);
-                Console.WriteLine(gameOver);
-                Console.SetCursorPosition(windowWidth / 2 - gameOver.Length / 2 - 1, windowHeight / 3 + 2);
+                
+                Console.SetCursorPosition(windowWidth / 2 -10, windowHeight / 3 -5);
                 Console.WriteLine("Your high score is {0} ", player.Score);
-                Console.WriteLine("\n r- restart, v- view highscores, i- instructions\n\n\t\t   ESC - exit");
+                Console.SetCursorPosition(windowWidth / 2 - 11, windowHeight / 3 - 2);
+                Console.WriteLine("Press m  to enter menu.");
+                Console.SetCursorPosition(windowWidth / 2 - 10, windowHeight / 3 + 1);
+                Console.WriteLine("Press escape  to exit.");
 
                 //TODO  -  tuk trqbva da se napi6e vryzkata s faila
                 do
                 {
                     ConsoleKeyInfo waitedKey = Console.ReadKey(true);
-                    if (waitedKey.Key == ConsoleKey.R)
+                    if (waitedKey.Key == ConsoleKey.M)
                     {
                         ResetGame();
-                    }
+                    }                   
                     else if (waitedKey.Key == ConsoleKey.Escape)
                     {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.SetCursorPosition(windowHeight / 2, 10);
                         Environment.Exit(0);
-                    }
-                    else if (waitedKey.Key == ConsoleKey.I)
-                    {
-                        DrawInstructions();
-                        ResetGame();
-                    }
+                    }                   
                 } while (true);
             }
         }
