@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 
 namespace ConsoleGame
@@ -7,6 +8,7 @@ namespace ConsoleGame
     {
         public const int windowWidth = 50;
         public const int windowHeight = 21;
+        public const string highscoresFile = "highscores.txt";
         public static bool over = false;
         public const int InitialGameSpeed = 100;
         public static int gameSpeed = InitialGameSpeed;
@@ -253,7 +255,16 @@ namespace ConsoleGame
                 Console.SetCursorPosition(windowWidth / 2 - 10, windowHeight / 3 + 1);
                 Console.WriteLine("Press escape  to exit.");
 
-                //TODO  -  tuk trqbva da se napi6e vryzkata s faila
+                if (!File.Exists(highscoresFile))
+                {
+                    File.Create(highscoresFile);
+                }
+
+                using (StreamWriter file = new StreamWriter(highscoresFile, true))
+                {
+                    file.WriteLine(player.Score);
+                }
+
                 do
                 {
                     ConsoleKeyInfo waitedKey = Console.ReadKey(true);
