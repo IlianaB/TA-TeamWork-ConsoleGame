@@ -56,13 +56,13 @@ namespace ConsoleGame
                         this.y = y - 1;
                         this.x = x - 1;
                     }
-                    else if (this.y == Console.WindowHeight - 1 && (this.x == pad.X + 1) ||(this.x == pad.X + 2)  ||(this.x == pad.X + 3)  )
+                    else if (this.y == Console.WindowHeight - 1 && (this.x == pad.X + 1) || (this.x == pad.X + 2) || (this.x == pad.X + 3))
                     {
                         this.topDirection = true;
                         rightDirection = true;
                         this.y = y - 1;
                     }
-                    else if(this.y == Console.WindowHeight - 1 && ((this.x == pad.X + 4) || (this.x == pad.X + 5)))
+                    else if (this.y == Console.WindowHeight - 1 && ((this.x == pad.X + 4) || (this.x == pad.X + 5)))
                     {
                         this.topDirection = true;
                         rightDirection = true;
@@ -100,7 +100,7 @@ namespace ConsoleGame
 
                     }
 
-                    else if (this.y == Console.WindowHeight - 1 &&  ((this.x == pad.X) || (this.x == pad.X - 1)))
+                    else if (this.y == Console.WindowHeight - 1 && ((this.x == pad.X) || (this.x == pad.X - 1)))
                     {
                         this.topDirection = true;
                         rightDirection = false;
@@ -130,7 +130,7 @@ namespace ConsoleGame
             Draw('*');
             player.Lives--;
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(ConsoleGame.windowWidth / 3 - 1, ConsoleGame.windowHeight / 2);
+            Console.SetCursorPosition(ConsoleGame.WindowWidth / 3 - 1, ConsoleGame.WindowHeight / 2);
             if (player.Lives == 1)
             {
                 Console.Write("You have {0} life left", player.Lives);
@@ -141,9 +141,9 @@ namespace ConsoleGame
             }
             Console.ForegroundColor = ConsoleColor.White;
             Thread.Sleep(1500);
-            this.x = ConsoleGame.windowWidth / 2;
-            this.y = ConsoleGame.windowHeight - 2;
-            pad.X = ConsoleGame.windowWidth / 2 - pad.Width / 2;
+            this.x = ConsoleGame.WindowWidth / 2;
+            this.y = ConsoleGame.WindowHeight - 2;
+            pad.X = ConsoleGame.WindowWidth / 2 - pad.Width / 2;
             this.topDirection = true;
             ConsoleGame.Play();
         }
@@ -152,7 +152,7 @@ namespace ConsoleGame
         {
             Draw('*');
             string gameOver = "G A M E   O V E R";
-            Console.SetCursorPosition(ConsoleGame.windowWidth / 2 - gameOver.Length / 2, ConsoleGame.windowHeight / 2);
+            Console.SetCursorPosition(ConsoleGame.WindowWidth / 2 - gameOver.Length / 2, ConsoleGame.WindowHeight / 2);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(gameOver);
             Thread.Sleep(1000);
@@ -169,7 +169,7 @@ namespace ConsoleGame
                     if (player.Score % 10 == 0 && player.Score != 0)
                     {
                         ConsoleGame.gameLevel++;
-                        ConsoleGame.gameSpeed = ConsoleGame.InitialGameSpeed - ConsoleGame.gameLevel * 6;
+                        ConsoleGame.gameSpeed = ConsoleGame.InitialGameSpeed - ConsoleGame.gameLevel * 4;
                     }
 
                     printScore(player);
@@ -207,7 +207,7 @@ namespace ConsoleGame
 
         public bool IsRightWallCollision()
         {
-            return this.x == ConsoleGame.windowWidth;
+            return this.x == ConsoleGame.WindowWidth;
         }
 
         public bool IsLeftWallCollision()
@@ -217,7 +217,7 @@ namespace ConsoleGame
 
         public bool IsBottomWallCollision()
         {
-            return this.y == ConsoleGame.windowHeight - 1;
+            return this.y == ConsoleGame.WindowHeight - 1;
         }
 
         public bool IsTopWallCollision()

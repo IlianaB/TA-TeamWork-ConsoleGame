@@ -6,17 +6,17 @@ namespace ConsoleGame
 {
     class ConsoleGame
     {
-        public const int windowWidth = 50;
-        public const int windowHeight = 21;
-        public const string highscoresFile = "highscores.txt";
+        public const int WindowWidth = 50;
+        public const int WindowHeight = 21;
+        public const string HighscoresFile = "highscores.txt";
         public static bool over = false;
         public const int InitialGameSpeed = 100;
         public static int gameSpeed = InitialGameSpeed;
         public static int gameLevel = 1;
 
-        private static Pad pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
-        private static Ball ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
-        private static Brick[,] bricks = new Brick[7, windowWidth];
+        private static Pad pad = new Pad(WindowWidth / 2 - 3, WindowHeight - 1, ConsoleColor.White);
+        private static Ball ball = new Ball(WindowWidth / 2 + 1, WindowHeight - 2, ConsoleColor.Red);
+        private static Brick[,] bricks = new Brick[7, WindowWidth];
         private static Player player = new Player(0, 4);
 
         static void Main()
@@ -46,7 +46,7 @@ namespace ConsoleGame
 
         private static void DrawMenu()
         {
-            Console.Clear();           
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             string[] menu = new string[5];
             menu[0] = "Play";
@@ -56,10 +56,10 @@ namespace ConsoleGame
             menu[4] = "Exit";
 
             int maxLength = menu[2].Length;
-            int startLeft = windowWidth / 2 - maxLength / 2;
-            int startTop = windowHeight / 2 - menu.Length;
-             int currentSelectedItem = 0;
-             bool selected = false;
+            int startLeft = WindowWidth / 2 - maxLength / 2;
+            int startTop = WindowHeight / 2 - menu.Length;
+            int currentSelectedItem = 0;
+            bool selected = false;
             for (int i = 0; i < menu.Length; i++)
             {
                 Console.SetCursorPosition(startLeft, startTop + 2 * i);
@@ -73,7 +73,7 @@ namespace ConsoleGame
             }
             lines[0] = true;
             redrawOptions(startTop, startLeft, ref lines, ref menu);
-           ConsoleKeyInfo chosenLine = new ConsoleKeyInfo();
+            ConsoleKeyInfo chosenLine = new ConsoleKeyInfo();
             while (!selected)
             {
                 chosenLine = Console.ReadKey(true);
@@ -82,7 +82,7 @@ namespace ConsoleGame
                     lines[currentSelectedItem] = false;
                     currentSelectedItem--;
                     lines[currentSelectedItem] = true;
-                    
+
                 }
                 else if (lines[4] == false && chosenLine.Key == ConsoleKey.DownArrow)
                 {
@@ -94,14 +94,14 @@ namespace ConsoleGame
                 {
                     selected = true;
                     break;
-                   
+
                 }
-                redrawOptions(startTop, startLeft,ref lines, ref menu);
+                redrawOptions(startTop, startLeft, ref lines, ref menu);
             }
             goIntoSelectedMenu(ref lines);
         }
 
-        private static void  goIntoSelectedMenu(ref bool[] array)
+        private static void goIntoSelectedMenu(ref bool[] array)
         {
             if (array[0] == true)
             {
@@ -126,12 +126,12 @@ namespace ConsoleGame
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(windowHeight / 2, 10 );                
+                Console.SetCursorPosition(WindowHeight / 2, 10);
                 Environment.Exit(0);
             }
         }
 
-        private static void redrawOptions(int top,int left,ref bool[] array,ref string[] arrayStr)
+        private static void redrawOptions(int top, int left, ref bool[] array, ref string[] arrayStr)
         {
 
             for (int i = 0; i < array.Length; i++)
@@ -211,10 +211,10 @@ namespace ConsoleGame
 
         private static void SetupGameField()
         {
-            Console.WindowHeight = windowHeight;
-            Console.BufferHeight = windowHeight;
-            Console.WindowWidth = windowWidth;
-            Console.BufferWidth = windowWidth;
+            Console.WindowHeight = WindowHeight;
+            Console.BufferHeight = WindowHeight;
+            Console.WindowWidth = WindowWidth;
+            Console.BufferWidth = WindowWidth;
             Console.Title = "Brick Wall Game";
             Console.CursorVisible = false;
         }
@@ -245,22 +245,22 @@ namespace ConsoleGame
         private static void CheckGameOver()
         {
             if (over)
-            {               
+            {
                 Console.Clear();
-                
-                Console.SetCursorPosition(windowWidth / 2 -10, windowHeight / 3 -5);
-                Console.WriteLine("Your high score is {0} ", player.Score);
-                Console.SetCursorPosition(windowWidth / 2 - 11, windowHeight / 3 - 2);
-                Console.WriteLine("Press m  to enter menu.");
-                Console.SetCursorPosition(windowWidth / 2 - 10, windowHeight / 3 + 1);
-                Console.WriteLine("Press escape  to exit.");
 
-                if (!File.Exists(highscoresFile))
+                Console.SetCursorPosition(WindowWidth / 2 - 10, WindowHeight / 3 - 5);
+                Console.WriteLine("Your highscore is {0} ", player.Score);
+                Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight / 3 - 2);
+                Console.WriteLine("Press m to enter menu.");
+                Console.SetCursorPosition(WindowWidth / 2 - 10, WindowHeight / 3 + 1);
+                Console.WriteLine("Press escape to exit.");
+
+                if (!File.Exists(HighscoresFile))
                 {
-                    File.Create(highscoresFile);
+                    File.Create(HighscoresFile);
                 }
 
-                using (StreamWriter file = new StreamWriter(highscoresFile, true))
+                using (StreamWriter file = new StreamWriter(HighscoresFile, true))
                 {
                     file.WriteLine(player.Score);
                 }
@@ -271,14 +271,14 @@ namespace ConsoleGame
                     if (waitedKey.Key == ConsoleKey.M)
                     {
                         ResetGame();
-                    }                   
+                    }
                     else if (waitedKey.Key == ConsoleKey.Escape)
                     {
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.SetCursorPosition(windowHeight / 2, 10);
+                        Console.SetCursorPosition(WindowHeight / 2, 10);
                         Environment.Exit(0);
-                    }                   
+                    }
                 } while (true);
             }
         }
@@ -302,7 +302,7 @@ namespace ConsoleGame
             Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 14);
             Console.WriteLine("the ball across the playfield and");
             Console.SetCursorPosition(Console.WindowWidth / 2 - 14, 15);
-            Console.WriteLine("try to coolect all the bricks");
+            Console.WriteLine("try to collect all the bricks");
             Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 18);
             Console.WriteLine("PRESS ANY KEY TO START");
             ConsoleKeyInfo keyToReturnToGame = Console.ReadKey(true);
@@ -312,8 +312,8 @@ namespace ConsoleGame
         private static void ResetGame()
         {
             over = false;
-            pad = new Pad(windowWidth / 2 - 3, windowHeight - 1, ConsoleColor.White);
-            ball = new Ball(windowWidth / 2 + 1, windowHeight - 2, ConsoleColor.Red);
+            pad = new Pad(WindowWidth / 2 - 3, WindowHeight - 1, ConsoleColor.White);
+            ball = new Ball(WindowWidth / 2 + 1, WindowHeight - 2, ConsoleColor.Red);
             player = new Player(0, 4);
             Console.Clear();
             gameSpeed = InitialGameSpeed;
