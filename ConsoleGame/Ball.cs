@@ -9,7 +9,6 @@ namespace ConsoleGame
         private int y;
         private int oldX;
         private int oldY;
-        private bool stopDiagonal;
         private bool rightDirection;
         private bool topDirection;
         private ConsoleColor color;
@@ -19,7 +18,6 @@ namespace ConsoleGame
             this.x = x;
             this.y = y;
             this.color = color;
-            this.stopDiagonal = false;
             this.rightDirection = true;
             this.topDirection = true;
         }
@@ -110,13 +108,13 @@ namespace ConsoleGame
                     else
                     {
                         if (player.Lives > 1)
-                        {                            
+                        {
                             DrawLostLivesScreen(pad, player);
-                            
+
                         }
                         else
                         {
-                            
+
                             DrawGameOverScreen();
                         }
                     }
@@ -226,8 +224,6 @@ namespace ConsoleGame
                                 this.rightDirection = false;
                             }
                         }
-
-
                     }
 
 
@@ -256,12 +252,7 @@ namespace ConsoleGame
         {
             this.oldX = this.x;
             this.oldY = this.y;
-
-            if (!this.stopDiagonal)
-            {
-                this.x = this.rightDirection ? this.x + 1 : this.x - 1;
-            }
-
+            this.x = this.rightDirection ? this.x + 1 : this.x - 1;
             this.y = this.topDirection ? this.y - 1 : this.y + 1;
         }
 

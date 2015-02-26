@@ -95,7 +95,6 @@ namespace ConsoleGame
                 {
                     selected = true;
                     break;
-
                 }
                 redrawOptions(startTop, startLeft, ref lines, ref menu);
             }
@@ -164,7 +163,6 @@ namespace ConsoleGame
             {
                 if (array[i] == true)
                 {
-
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.SetCursorPosition(left, top + 2 * i);
                     Console.Write(arrayStr[i]);
@@ -223,9 +221,7 @@ namespace ConsoleGame
                 {
                     for (int x = 0; x < bricks.GetLength(1) - 1; x++)
                     {
-
                         bricks[y, x].Draw('-');
-
                     }
                 }
                 for (int x = 0; x < bricks.GetLength(1) - 1; x++)
