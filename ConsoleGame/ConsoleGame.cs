@@ -215,7 +215,7 @@ namespace ConsoleGame
             Console.BufferHeight = WindowHeight;
             Console.WindowWidth = WindowWidth;
             Console.BufferWidth = WindowWidth;
-            Console.Title = "Brick Wall Game";
+            Console.Title = "Brick-Ball";
             Console.CursorVisible = false;
         }
 
@@ -289,20 +289,24 @@ namespace ConsoleGame
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(Console.WindowWidth / 2 - 7, 1);
             Console.Write("INSTRUCTIONS");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 6, 4);
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 6, 3);
             Console.WriteLine("Directions:");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 17, 6);
-            Console.WriteLine(" <- key  - pad direction Left");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 17, 8);
-            Console.WriteLine(" -> key  - pad direction Right");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 6, 11);
-            Console.WriteLine("HOW TO PLAY:");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 13);
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 13, 5);
+            Console.WriteLine(" <- key  - move left");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 13, 7);
+            Console.WriteLine(" -> key  - move right");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 10);
             Console.WriteLine("Move the pad in order to navigate ");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 14);
-            Console.WriteLine("the ball across the playfield and");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 14, 15);
-            Console.WriteLine("try to collect all the bricks");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 11);
+            Console.WriteLine("the ball across the playfield, and");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 12);
+            Console.WriteLine("try to break all the bricks.");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 21, 14);
+            Console.WriteLine("You start with 4 lives and receive points");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 21, 15);
+            Console.WriteLine("for each brick you break. For every 10 points");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 21, 16);
+            Console.WriteLine("collected, you move up a level.");
             Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 18);
             Console.WriteLine("PRESS ANY KEY TO START");
             ConsoleKeyInfo keyToReturnToGame = Console.ReadKey(true);
