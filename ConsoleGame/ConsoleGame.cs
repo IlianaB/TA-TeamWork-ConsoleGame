@@ -112,7 +112,7 @@ namespace ConsoleGame
             else if (array[1] == true)
             {
                 Console.Clear();
-                Console.WriteLine("Tova ne e gotovo oshte,kolegi :D");  // TODO
+                Console.WriteLine("Tova ne e gotovo oshte,kolegi :D");// TODO      
             }
             else if (array[2] == true)
             {
@@ -133,6 +133,7 @@ namespace ConsoleGame
                 Console.WriteLine("Press m to enter menu.");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 13);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(@"TEAM ""IMP"": Iliana Bobeva, Luba Gerasimova");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 11);
                 Console.WriteLine(@"Bistra Gospodinova, Dimitar Bakardzhiev");
