@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 namespace ConsoleGame
@@ -111,7 +113,23 @@ namespace ConsoleGame
             else if (array[1] == true)
             {
                 Console.Clear();
-                Console.WriteLine("Tova ne e gotovo oshte,kolegi :D");// TODO      
+                string[] lines = File.ReadAllLines(HighscoresFile);
+                var highscores = new List<int>();
+
+                foreach (var line in lines)
+                {
+                    highscores.Add(int.Parse(line));
+                }
+
+                highscores.Sort();
+                highscores.Reverse();
+                const int ViewedScoresCount = 5;
+
+                // shows N scores if there are more than N records in the file, else it shows as many scores as the their total count
+                for (int i = 0; i < (highscores.Count > ViewedScoresCount ? ViewedScoresCount : highscores.Count); i++)
+                {
+                    Console.WriteLine("{0}. {1} points", i + 1, highscores[i]);
+                }
             }
             else if (array[2] == true)
             {
