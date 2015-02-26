@@ -179,8 +179,63 @@ namespace ConsoleGame
 
                     printScore(player);
                     bricks[this.y, this.x].IsBroken = true;
+                    //KOD DRAGO
+                    if (this.topDirection == true)
+                    {
+                        this.topDirection = false;
+
+                        if (this.rightDirection == true)
+                        {
+                            if (bricks[this.y + 1, this.x + 1].IsBroken == false)
+                            {
+                                this.rightDirection = false;
+                            }
+                        }
+                        else
+                        {
+                            if (bricks[this.y + 1, this.x - 1].IsBroken == false)
+                            {
+                                this.rightDirection = true;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        this.topDirection = true;
+
+                        if (this.rightDirection == true)
+                        {
+                            if (bricks[this.y - 1, this.x - 1].IsBroken == false)
+                            {
+                                this.rightDirection = false;
+                            }
+                            else
+                            {
+                                this.rightDirection = true;
+                            }
+                        }
+                        else
+                        {
+                            if (bricks[this.y - 1, this.x + 1].IsBroken == false)
+                            {
+                                this.rightDirection = true;
+                            }
+                            else
+                            {
+                                this.rightDirection = false;
+                            }
+                        }
+
+
+                    }
+
+
+
+                    /*   KOD NA ILIANA
                     this.topDirection = !this.topDirection;
                     this.rightDirection = !this.rightDirection;
+                     */
                 }
             }
             catch (Exception) { }
