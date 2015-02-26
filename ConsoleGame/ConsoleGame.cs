@@ -36,7 +36,7 @@ namespace ConsoleGame
 
             int maxLength = menu[2].Length;
             int startLeft = WindowWidth / 2 - maxLength / 2;
-            int startTop = WindowHeight / 2 - menu.Length;
+            int startTop = WindowHeight / 2 - menu.Length + 3;
             int currentSelectedItem = 0;
 
             bool[] lines = new bool[5];
@@ -64,7 +64,7 @@ namespace ConsoleGame
                 }
                 Console.Beep(333, 75);
             }
-            
+
         }
 
         private static void goIntoSelectedMenu(bool[] array)
@@ -76,7 +76,19 @@ namespace ConsoleGame
             }
             else if (array[1] == true)
             {
+                string scoreTitle = @"
+            __                         
+           / _\ ___ ___  _ __ ___  ___ 
+           \ \ / __/ _ \| '__/ _ \/ __|
+           _\ \ (_| (_) | | |  __/\__ \
+           \__/\___\___/|_|  \___||___/
+";
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.SetCursorPosition(0, 0);
+                Console.Write(scoreTitle);
+                Console.ForegroundColor = ConsoleColor.White;
+
                 string[] lines = File.ReadAllLines(HighscoresFile);
                 var highscores = new List<int>();
 
@@ -92,8 +104,13 @@ namespace ConsoleGame
                 // shows N scores if there are more than N records in the file, else it shows as many scores as the their total count
                 for (int i = 0; i < (highscores.Count > ViewedScoresCount ? ViewedScoresCount : highscores.Count); i++)
                 {
+                    Console.SetCursorPosition(WindowWidth / 2 - 6, 8 + 2 * i);
                     Console.WriteLine("{0}. {1} points", i + 1, highscores[i]);
                 }
+
+                Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("Press m to enter menu.");
 
                 do
                 {
@@ -110,23 +127,35 @@ namespace ConsoleGame
             }
             else if (array[3] == true)
             {
+                string aboutTitle = @"
+             _   _                 _   
+            /_\ | |__   ___  _   _| |_ 
+           //_\\| '_ \ / _ \| | | | __|
+          /  _  \ |_) | (_) | |_| | |_ 
+          \_/ \_/_.__/ \___/ \__,_|\__|
+";
+
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 20);
-                Console.WriteLine(@"Game ""Brik - Ball"" is designed and performed by");
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 18);
-                Console.WriteLine(@"TEAM ""IMP"" as a team work project in CSharp");
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 16);
-                Console.WriteLine(@"course in TelerikAcademy.");
+                Console.SetCursorPosition(0, 0);
+                Console.Write(aboutTitle);
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 13);
-                Console.WriteLine(@"TEAM ""IMP"": Iliana Bobeva, Luba Gerasimova");
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 11);
-                Console.WriteLine(@"Bistra Gospodinova, Dimitar Bakardzhiev");
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 9);
-                Console.WriteLine(@"Dragomir Tachev, Emo Penovski");
+                Console.WriteLine(@"Game B-Breaker is developed by TEAM IMP as a");
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 12);
+                Console.WriteLine(@"team project in C#2 course in TelerikAcademy.");
+                Console.SetCursorPosition(WindowWidth / 2 - 4, WindowHeight - 10);
+                Console.WriteLine(@"TEAM IMP:");
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 8);
+                Console.WriteLine(@"Iliana Bobeva, Luba Gerasimova");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 7);
+                Console.WriteLine(@"Bistra Gospodinova, Dimitar Bakardzhiev");
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 6);
+                Console.WriteLine(@"Dragomir Tachev, Emo Penovski");
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 5);
                 Console.WriteLine(@"Kiril Mihaylov, Petar Zubev");
                 Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Press m to enter menu.");
                 Console.ForegroundColor = ConsoleColor.White;
                 do
@@ -149,6 +178,18 @@ namespace ConsoleGame
 
         private static void DrawMenu(int top, int left, bool[] array, string[] arrayStr)
         {
+            string gameName = @"
+    ___         ___                _             
+   / __\       / __\_ __ ___  __ _| | _____ _ __ 
+  /__\//_____ /__\// '__/ _ \/ _` | |/ / _ \ '__|
+ / \/  \_____/ \/  \ | |  __/ (_| |   <  __/ |   
+ \_____/     \_____/_|  \___|\__,_|_|\_\___|_|   
+                                               
+";
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(0, 0);
+            Console.Write(gameName);
+
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == true)
@@ -275,14 +316,24 @@ namespace ConsoleGame
         {
             if (over)
             {
+                string gameOverTitle = @"
+   ___                       ___                 
+  / _ \__ _ _ __ ___   ___  /___\__   _____ _ __ 
+ / /_\/ _` | '_ ` _ \ / _ \//  //\ \ / / _ \ '__|
+/ /_\\ (_| | | | | | |  __/ \_//  \ V /  __/ |   
+\____/\__,_|_| |_| |_|\___\___/    \_/ \___|_| 
+";
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.SetCursorPosition(0, 0);
+                Console.Write(gameOverTitle);
 
-                Console.SetCursorPosition(WindowWidth / 2 - 10, WindowHeight / 3 - 5);
-                Console.WriteLine("Your highscore is {0} ", player.Score);
-                Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight / 3 - 2);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(WindowWidth / 2 - 9, WindowHeight - 9);
+                Console.WriteLine("Your score is {0}!", player.Score);
+                Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 19);
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Press m to enter menu.");
-                Console.SetCursorPosition(WindowWidth / 2 - 10, WindowHeight / 3 + 1);
-                Console.WriteLine("Press escape to exit.");
 
                 if (!File.Exists(HighscoresFile))
                 {
@@ -314,30 +365,37 @@ namespace ConsoleGame
 
         private static void DrawInstructions()
         {
+            string title = @"
+    _____           _                   _       
+    \_   \_ __  ___| |_ _ __ _   _  ___| |_ ___ 
+     / /\/ '_ \/ __| __| '__| | | |/ __| __/ __|
+  /\/ /_ | | | \__ \ |_| |  | |_| | (__| |_\__ \
+  \____/ |_| |_|___/\__|_|   \__,_|\___|\__|___/
+";
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 7, 1);
-            Console.Write("INSTRUCTIONS");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 6, 3);
+            Console.SetCursorPosition(0, 0);
+            Console.Write(title);
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(WindowWidth / 2 - 6, 7);
             Console.WriteLine("Directions:");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 13, 5);
-            Console.WriteLine(" <- key  - move left");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 13, 7);
-            Console.WriteLine(" -> key  - move right");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 10);
-            Console.WriteLine("Move the pad in order to navigate ");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 11);
-            Console.WriteLine("the ball across the playfield, and");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 16, 12);
-            Console.WriteLine("try to break all the bricks.");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 21, 14);
-            Console.WriteLine("You start with 4 lives and receive points");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 21, 15);
-            Console.WriteLine("for each brick you break. For every 10 points");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 21, 16);
-            Console.WriteLine("collected, you move up a level.");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 18);
+            Console.SetCursorPosition(WindowWidth / 2 - 13, 9);
+            Console.WriteLine(" <- key - move left");
+            Console.SetCursorPosition(WindowWidth / 2 - 13, 11);
+            Console.WriteLine(" -> key - move right");
+            Console.SetCursorPosition(WindowWidth / 2 - 16, 13);
+            Console.WriteLine("Move the pad to navigate the ball.");
+            Console.SetCursorPosition(WindowWidth / 2 - 12, 14);
+            Console.WriteLine("Try to break all bricks.");
+            Console.SetCursorPosition(WindowWidth / 2 - 23, 16);
+            Console.WriteLine("You have 4 lives. A broken brick gives a point.");
+            Console.SetCursorPosition(WindowWidth / 2 - 22, 17);
+            Console.WriteLine("For every 10 points collected, you level up.");
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 19);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Press m to enter menu.");
+
 
             do
             {
