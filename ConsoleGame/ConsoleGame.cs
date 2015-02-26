@@ -128,7 +128,9 @@ namespace ConsoleGame
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 16);
                 Console.WriteLine(@"course in TelerikAcademy.");                
                 Console.SetCursorPosition(WindowWidth /2 - 11, WindowHeight - 2);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Press m to enter menu.");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 13);
                 Console.WriteLine(@"TEAM ""IMP"": Iliana Bobeva, Luba Gerasimova");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 11);
@@ -248,6 +250,20 @@ namespace ConsoleGame
 
         private static void clearTop3Rows()
         {
+            for (int row = 3; row <= 6; row++)
+            {
+                if (row == 3)
+                {
+                    for (int j = 0; j < bricks.GetLength(1); j++)
+                    {
+                        bricks[row, j].IsBroken = true;
+                    }
+                }
+                bricks[row, 0].IsBroken = true;
+                bricks[row, 1].IsBroken = true;
+                bricks[row, 47].IsBroken = true;
+                bricks[row, 48].IsBroken = true;
+            }
             for (int row = 0; row <= 2; row++)
             {
                 for (int col = 0; col < bricks.GetLength(1); col++)
