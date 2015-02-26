@@ -121,6 +121,7 @@ namespace ConsoleGame
             else if (array[3] == true)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 20);
                 Console.WriteLine(@"Game ""Brik - Ball"" is designed and performed by");                
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 18);
