@@ -25,85 +25,49 @@ namespace ConsoleGame
         {
             SetupGameField();
             GenerateBricks();
-            DrawMenu();
-
-            do
-            {
-                ConsoleKeyInfo key = Console.ReadKey(true);
-
-                if (key.Key == ConsoleKey.P)
-                {
-                    Play();
-                }
-                if (key.Key == ConsoleKey.I)
-                {
-                    DrawInstructions();
-                }
-                if (key.Key == ConsoleKey.Escape)
-                {
-                    Environment.Exit(0);
-                }
-            } while (true);
+            GenerateMenu();
         }
 
-        private static void DrawMenu()
+        private static void GenerateMenu()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-            string[] menu = new string[5];
-            menu[0] = "Play";
-            menu[1] = "Highscores";
-            menu[2] = "Instructions";
-            menu[3] = "About";
-            menu[4] = "Exit";
+            string[] menu = { "Play", "Highscores", "Instructions", "About", "Exit" };
 
             int maxLength = menu[2].Length;
             int startLeft = WindowWidth / 2 - maxLength / 2;
             int startTop = WindowHeight / 2 - menu.Length;
             int currentSelectedItem = 0;
-            bool selected = false;
-            for (int i = 0; i < menu.Length; i++)
-            {
-                Console.SetCursorPosition(startLeft, startTop + 2 * i);
-                Console.Write(menu[i]);
-            }
 
             bool[] lines = new bool[5];
-            for (int i = 0; i < lines.Length; i++)
-            {
-                lines[i] = false;
-            }
             lines[0] = true;
-            redrawOptions(startTop, startLeft, ref lines, ref menu);
+
             ConsoleKeyInfo chosenLine = new ConsoleKeyInfo();
-            while (!selected)
+            while (true)
             {
+                DrawMenu(startTop, startLeft, lines, menu);
                 chosenLine = Console.ReadKey(true);
+
                 if (lines[0] == false && chosenLine.Key == ConsoleKey.UpArrow)
                 {
                     lines[currentSelectedItem] = false;
-                    currentSelectedItem--;
-                    lines[currentSelectedItem] = true;
-                    Console.Beep(333, 75);
+                    lines[--currentSelectedItem] = true;
                 }
                 else if (lines[4] == false && chosenLine.Key == ConsoleKey.DownArrow)
                 {
                     lines[currentSelectedItem] = false;
-                    currentSelectedItem++;
-                    lines[currentSelectedItem] = true;
-                    Console.Beep(333, 75);
+                    lines[++currentSelectedItem] = true;
                 }
                 else if (chosenLine.Key == ConsoleKey.Enter)
                 {
-                    selected = true;
-                    break;
+                    goIntoSelectedMenu(lines);
                 }
-                redrawOptions(startTop, startLeft, ref lines, ref menu);
+                Console.Beep(333, 75);
             }
-            goIntoSelectedMenu(ref lines);
+            
         }
 
-        private static void goIntoSelectedMenu(ref bool[] array)
+        private static void goIntoSelectedMenu(bool[] array)
         {
             if (array[0] == true)
             {
@@ -130,6 +94,15 @@ namespace ConsoleGame
                 {
                     Console.WriteLine("{0}. {1} points", i + 1, highscores[i]);
                 }
+
+                do
+                {
+                    ConsoleKeyInfo waitedKey = Console.ReadKey(true);
+                    if (waitedKey.Key == ConsoleKey.M)
+                    {
+                        ResetGame();
+                    }
+                } while (true);
             }
             else if (array[2] == true)
             {
@@ -174,9 +147,8 @@ namespace ConsoleGame
             }
         }
 
-        private static void redrawOptions(int top, int left, ref bool[] array, ref string[] arrayStr)
+        private static void DrawMenu(int top, int left, bool[] array, string[] arrayStr)
         {
-
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == true)
@@ -365,9 +337,23 @@ namespace ConsoleGame
             Console.SetCursorPosition(Console.WindowWidth / 2 - 21, 16);
             Console.WriteLine("collected, you move up a level.");
             Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 18);
-            Console.WriteLine("PRESS ANY KEY TO START");
-            ConsoleKeyInfo keyToReturnToGame = Console.ReadKey(true);
-            Play();
+            Console.WriteLine("Press m to enter menu.");
+
+            do
+            {
+                ConsoleKeyInfo waitedKey = Console.ReadKey(true);
+                if (waitedKey.Key == ConsoleKey.M)
+                {
+                    ResetGame();
+                }
+                else if (waitedKey.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(WindowHeight / 2, 10);
+                    Environment.Exit(0);
+                }
+            } while (true);
         }
 
         private static void ResetGame()
