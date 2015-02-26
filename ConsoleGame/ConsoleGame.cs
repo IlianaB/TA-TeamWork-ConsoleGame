@@ -121,7 +121,30 @@ namespace ConsoleGame
             else if (array[3] == true)
             {
                 Console.Clear();
-                Console.WriteLine("Tova ne e gotovo oshte,kolegi :D");  //TODO
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 20);
+                Console.WriteLine(@"Game ""Brik - Ball"" is designed and performed by");                
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 18);
+                Console.WriteLine(@"TEAM ""IMP"" as a team work project in CSharp");
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 16);
+                Console.WriteLine(@"course in TelerikAcademy.");                
+                Console.SetCursorPosition(WindowWidth /2 - 11, WindowHeight - 2);
+                Console.WriteLine("Press m to enter menu.");
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 13);
+                Console.WriteLine(@"TEAM ""IMP"": Iliana Bobeva, Luba Gerasimova");
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 11);
+                Console.WriteLine(@"Bistra Gospodinova, Dimitar Bakardzhiev");
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 9);
+                Console.WriteLine(@"Dragomir Tachev, Emo Penovski");
+                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 7);
+                Console.WriteLine(@"Kiril Mihaylov, Petar Zubev");
+                do
+                {
+                    ConsoleKeyInfo waitedKey = Console.ReadKey(true);
+                    if (waitedKey.Key == ConsoleKey.M)
+                    {
+                        ResetGame();
+                    }                    
+                } while (true);
             }
             else if (array[4] == true)
             {
