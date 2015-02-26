@@ -128,9 +128,6 @@ namespace ConsoleGame
                 Console.WriteLine(@"TEAM ""IMP"" as a team work project in CSharp");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 16);
                 Console.WriteLine(@"course in TelerikAcademy.");
-
-                //Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
-                //Console.WriteLine("Press m to enter menu.");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 13);
                 Console.WriteLine(@"TEAM ""IMP"": Iliana Bobeva, Luba Gerasimova");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 11);
