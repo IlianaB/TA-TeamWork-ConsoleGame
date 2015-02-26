@@ -82,13 +82,14 @@ namespace ConsoleGame
                     lines[currentSelectedItem] = false;
                     currentSelectedItem--;
                     lines[currentSelectedItem] = true;
-
+                    Console.Beep(333, 75);
                 }
                 else if (lines[4] == false && chosenLine.Key == ConsoleKey.DownArrow)
                 {
                     lines[currentSelectedItem] = false;
                     currentSelectedItem++;
                     lines[currentSelectedItem] = true;
+                    Console.Beep(333, 75);
                 }
                 else if (chosenLine.Key == ConsoleKey.Enter)
                 {
@@ -104,7 +105,7 @@ namespace ConsoleGame
         private static void goIntoSelectedMenu(ref bool[] array)
         {
             if (array[0] == true)
-            {
+            {              
                 Console.Clear();
                 Play();
             }
@@ -143,7 +144,7 @@ namespace ConsoleGame
                     Console.SetCursorPosition(left, top + 2 * i);
                     Console.Write(arrayStr[i]);
                     Console.SetCursorPosition(left - 3, top + 2 * i);
-                    Console.Write(">>");
+                    Console.Write(">>");                    
                 }
                 else
                 {
@@ -164,6 +165,10 @@ namespace ConsoleGame
             Console.ForegroundColor = ConsoleColor.White;
             pad.Draw('▀');
             clearTop3Rows();
+            Console.Beep(350, 250);
+            Console.Beep(350, 150);
+            Console.Beep(350, 150);
+            Console.Beep(700, 350);
 
             while (true)
             {

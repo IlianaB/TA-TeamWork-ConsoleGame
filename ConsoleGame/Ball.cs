@@ -107,8 +107,6 @@ namespace ConsoleGame
                         this.x = x - 1;
 
                     }
-
-
                     else
                     {
                         if (player.Lives > 1)
