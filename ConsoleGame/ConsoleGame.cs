@@ -166,8 +166,7 @@ namespace ConsoleGame
             pad.Draw('▀');
             clearTop3Rows();
             Console.Beep(350, 250);
-            Console.Beep(350, 150);
-            Console.Beep(350, 150);
+            Console.Beep(350, 120);
             Console.Beep(700, 350);
 
             while (true)

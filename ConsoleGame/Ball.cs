@@ -110,11 +110,13 @@ namespace ConsoleGame
                     else
                     {
                         if (player.Lives > 1)
-                        {
+                        {                            
                             DrawLostLivesScreen(pad, player);
+                            
                         }
                         else
                         {
+                            
                             DrawGameOverScreen();
                         }
                     }
@@ -125,6 +127,7 @@ namespace ConsoleGame
         private void DrawLostLivesScreen(Pad pad, Player player)
         {
             Draw('*');
+            Console.Beep(150, 350);
             player.Lives--;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(ConsoleGame.WindowWidth / 3 - 1, ConsoleGame.WindowHeight / 2);
@@ -148,6 +151,10 @@ namespace ConsoleGame
         private void DrawGameOverScreen()
         {
             Draw('*');
+            Console.Beep(222, 200);
+            Console.Beep(200, 200);
+            Console.Beep(180, 200);
+            Console.Beep(150, 350);
             string gameOver = "G A M E   O V E R";
             Console.SetCursorPosition(ConsoleGame.WindowWidth / 2 - gameOver.Length / 2, ConsoleGame.WindowHeight / 2);
             Console.ForegroundColor = ConsoleColor.Red;
