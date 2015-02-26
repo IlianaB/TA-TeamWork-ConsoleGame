@@ -105,7 +105,7 @@ namespace ConsoleGame
         private static void goIntoSelectedMenu(ref bool[] array)
         {
             if (array[0] == true)
-            {              
+            {
                 Console.Clear();
                 Play();
             }
@@ -123,17 +123,15 @@ namespace ConsoleGame
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 20);
-                Console.WriteLine(@"Game ""Brik - Ball"" is designed and performed by");                
+                Console.WriteLine(@"Game ""Brik - Ball"" is designed and performed by");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 18);
                 Console.WriteLine(@"TEAM ""IMP"" as a team work project in CSharp");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 16);
-                Console.WriteLine(@"course in TelerikAcademy.");                
-                Console.SetCursorPosition(WindowWidth /2 - 11, WindowHeight - 2);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Press m to enter menu.");
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(@"course in TelerikAcademy.");
+
+                //Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
+                //Console.WriteLine("Press m to enter menu.");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 13);
-                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(@"TEAM ""IMP"": Iliana Bobeva, Luba Gerasimova");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 11);
                 Console.WriteLine(@"Bistra Gospodinova, Dimitar Bakardzhiev");
@@ -141,13 +139,16 @@ namespace ConsoleGame
                 Console.WriteLine(@"Dragomir Tachev, Emo Penovski");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 7);
                 Console.WriteLine(@"Kiril Mihaylov, Petar Zubev");
+                Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
+                Console.WriteLine("Press m to enter menu.");
+                Console.ForegroundColor = ConsoleColor.White;
                 do
                 {
                     ConsoleKeyInfo waitedKey = Console.ReadKey(true);
                     if (waitedKey.Key == ConsoleKey.M)
                     {
                         ResetGame();
-                    }                    
+                    }
                 } while (true);
             }
             else if (array[4] == true)
@@ -171,7 +172,7 @@ namespace ConsoleGame
                     Console.SetCursorPosition(left, top + 2 * i);
                     Console.Write(arrayStr[i]);
                     Console.SetCursorPosition(left - 3, top + 2 * i);
-                    Console.Write(">>");                    
+                    Console.Write(">>");
                 }
                 else
                 {
