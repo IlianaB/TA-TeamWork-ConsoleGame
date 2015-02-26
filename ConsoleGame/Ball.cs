@@ -46,7 +46,6 @@ namespace ConsoleGame
 
             if (this.IsBottomWallCollision())
             {
-
                 if (rightDirection == true)
                 {
                     if (this.y == Console.WindowHeight - 1 && this.x == pad.X)
@@ -165,6 +164,7 @@ namespace ConsoleGame
             {
                 if (!bricks[this.y, this.x].IsBroken)
                 {
+                    Console.Beep(497, 40);
                     player.Score++;
                     if (player.Score % 10 == 0 && player.Score != 0)
                     {
