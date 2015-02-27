@@ -149,15 +149,15 @@ namespace ConsoleGame
         private void DrawGameOverScreen()
         {
             Draw('*');
+            string gameOver = "G A M E   O V E R";
             Console.Beep(222, 200);
             Console.Beep(200, 200);
-            Console.Beep(180, 200);
-            Console.Beep(150, 350);
-            string gameOver = "G A M E   O V E R";
             Console.SetCursorPosition(ConsoleGame.WindowWidth / 2 - gameOver.Length / 2, ConsoleGame.WindowHeight / 2);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(gameOver);
-            Thread.Sleep(1000);
+            Thread.Sleep(30);
+            Console.Beep(180, 200);
+            Console.Beep(130, 700);
             ConsoleGame.over = true;
         }
 
