@@ -317,11 +317,17 @@ namespace ConsoleGame
             if (over)
             {
                 string gameOverTitle = @"
-   ___                       ___                 
-  / _ \__ _ _ __ ___   ___  /___\__   _____ _ __ 
- / /_\/ _` | '_ ` _ \ / _ \//  //\ \ / / _ \ '__|
-/ /_\\ (_| | | | | | |  __/ \_//  \ V /  __/ |   
-\____/\__,_|_| |_| |_|\___\___/    \_/ \___|_| 
+              _____    
+     ___..--""      `. 
+..-'               ,' ___                     
+                  ,' / _ \__ _ _ __ ___   ___   
+   (|\          ,'  / /_\/ _` | '_ ` _ \ / _ \
+      ________,'   / /_\\ (_| | | | | | |  __/
+   ,.`/`./\/`/     \_____\__,_|_| |_| |_|\___|
+  /-'             /___\_   _____ _ __      
+   `',^/\/\      //  /| \ / / _ \ '__|     
+________,'      / \_// \ V /  __/ |        
+                \___/   \_/ \___|_|        
 ";
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -329,11 +335,11 @@ namespace ConsoleGame
                 Console.Write(gameOverTitle);
 
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(WindowWidth / 2 - 9, WindowHeight - 9);
+                Console.SetCursorPosition(WindowWidth / 2 - 9, WindowHeight - 5);
                 Console.WriteLine("Your score is {0}!", player.Score);
                 Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 19);
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("Press m to enter menu.");
+                Console.WriteLine("Press M to enter menu.");
 
                 if (!File.Exists(HighscoresFile))
                 {
