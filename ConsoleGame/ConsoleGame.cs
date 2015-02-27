@@ -110,7 +110,7 @@ namespace ConsoleGame
 
                 Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("Press m to enter menu.");
+                Console.WriteLine("Press M to enter menu.");
 
                 do
                 {
@@ -141,13 +141,13 @@ namespace ConsoleGame
                 Console.Write(aboutTitle);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 13);
-                Console.WriteLine(@"Game B-Breaker is developed by TEAM IMP as a");
+                Console.WriteLine(@"The B-Breaker game was developed by TEAM IMP as a");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 12);
-                Console.WriteLine(@"team project in C#2 course in TelerikAcademy.");
-                Console.SetCursorPosition(WindowWidth / 2 - 4, WindowHeight - 10);
-                Console.WriteLine(@"TEAM IMP:");
+                Console.WriteLine(@"team project in the Telerik Academy C#2 course.");
+                Console.SetCursorPosition(WindowWidth / 2 - 15, WindowHeight - 10);
+                Console.WriteLine(@"The marvelous TEAM IMP:");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 8);
-                Console.WriteLine(@"Iliana Bobeva, Luba Gerasimova");
+                Console.WriteLine(@"Iliana Bobeva, Lyuba Gerassimova");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 7);
                 Console.WriteLine(@"Bistra Gospodinova, Dimitar Bakardzhiev");
                 Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 6);
@@ -156,7 +156,7 @@ namespace ConsoleGame
                 Console.WriteLine(@"Kiril Mihaylov, Petar Zubev");
                 Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("Press m to enter menu.");
+                Console.WriteLine("Press M to enter menu.");
                 Console.ForegroundColor = ConsoleColor.White;
                 do
                 {
@@ -372,11 +372,11 @@ ________,'      / \_// \ V /  __/ |
         private static void DrawInstructions()
         {
             string title = @"
-    _____           _                   _       
-    \_   \_ __  ___| |_ _ __ _   _  ___| |_ ___ 
-     / /\/ '_ \/ __| __| '__| | | |/ __| __/ __|
-  /\/ /_ | | | \__ \ |_| |  | |_| | (__| |_\__ \
-  \____/ |_| |_|___/\__|_|   \__,_|\___|\__|___/
+    _  _            _____    ___ _           
+   | || |_____ __ _|_   _|__| _ \ |__ _ _  _ 
+   | __ / _ \ V  V / | |/ _ \  _/ / _` | || |
+   |_||_\___/\_/\_/  |_|\___/_| |_\__,_|\_, |
+                                        |__/ 
 ";
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -400,7 +400,7 @@ ________,'      / \_// \ V /  __/ |
             Console.WriteLine("For every 10 points collected, you level up.");
             Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 19);
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("Press m to enter menu.");
+            Console.WriteLine("Press M to enter menu.");
 
 
             do
