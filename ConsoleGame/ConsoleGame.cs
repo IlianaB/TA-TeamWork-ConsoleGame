@@ -271,7 +271,7 @@ namespace ConsoleGame
             Console.BufferHeight = WindowHeight;
             Console.WindowWidth = WindowWidth;
             Console.BufferWidth = WindowWidth;
-            Console.Title = "Brick-Ball";
+            Console.Title = "B-Breaker";
             Console.CursorVisible = false;
         }
 
