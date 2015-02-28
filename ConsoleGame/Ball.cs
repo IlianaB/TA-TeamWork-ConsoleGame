@@ -180,27 +180,103 @@ namespace ConsoleGame
                     //KOD DRAGO
                     if (this.topDirection == true)
                     {
-                        this.topDirection = false;
-
-                        if (this.rightDirection == true)
+                        if (rightDirection)
                         {
-                            if (bricks[this.y + 1, this.x + 1].IsBroken == false)
+                            if (this.y == 6)
                             {
-                                this.rightDirection = false;
+                                topDirection = false;
                             }
+                            else if(this.y == 4 && this.x != 2)
+                            {
+                                if (bricks[this.y + 1, this.x].IsBroken == false || bricks[this.y + 1, this.x + 1].IsBroken == false)
+                                {
+                                    topDirection = false;
+                                    rightDirection = false;
+                                }
+                                else if (bricks[this.y + 1, this.x].IsBroken == true && bricks[this.y + 1, this.x + 1].IsBroken == true)
+                                {
+                                    topDirection = false;
+                                }      
+                            }
+                            else if (this.x == 2)
+                            {
+                                rightDirection = false;
+                            }
+                            else
+                            {
+                                if( (bricks[this.y+1,this.x].IsBroken == false || bricks[this.y+1,this.x+1].IsBroken == false) &&
+                                    (bricks[this.y-1,this.x-1].IsBroken == false || bricks[this.y,this.x-1].IsBroken == false))
+                                {
+                                    topDirection = false;
+                                    rightDirection = false;
+                                }
+                                else if( (bricks[this.y+1,this.x].IsBroken == false || bricks[this.y+1,this.x+1].IsBroken == false) &&
+                                    (bricks[this.y - 1, this.x - 1].IsBroken == true && bricks[this.y, this.x - 1].IsBroken == true))
+                                {
+                                    rightDirection = false;
+                                }
+                                else if ((bricks[this.y + 1, this.x].IsBroken == true && bricks[this.y + 1, this.x + 1].IsBroken == true) &&
+                                   (bricks[this.y - 1, this.x - 1].IsBroken == false || bricks[this.y, this.x - 1].IsBroken == false))
+                                {
+                                    topDirection = false;
+                                }
+                                else
+                                {
+                                    rightDirection = false;
+                                }
+                            }                            
                         }
                         else
                         {
-                            if (bricks[this.y + 1, this.x - 1].IsBroken == false)
+                            if (this.y == 6)
                             {
-                                this.rightDirection = true;
+                                topDirection = false;
+                            }
+                            else if (this.y == 4 && this.x != 46)
+                            {
+                                if (bricks[this.y + 1, this.x].IsBroken == false || bricks[this.y + 1, this.x - 1].IsBroken == false)
+                                {
+                                    topDirection = false;
+                                    rightDirection = true;
+                                }
+                                else if (bricks[this.y + 1, this.x].IsBroken == true && bricks[this.y + 1, this.x - 1].IsBroken == true)
+                                {
+                                    topDirection = false;
+                                }
+                            }
+                            else if (this.x == 46)
+                            {
+                                rightDirection = true;
+                            }
+                            else
+                            {
+                                if ((bricks[this.y + 1, this.x].IsBroken == false || bricks[this.y + 1, this.x - 1].IsBroken == false) &&
+                                    (bricks[this.y - 1, this.x + 1].IsBroken == false || bricks[this.y, this.x + 1].IsBroken == false))
+                                {
+                                    topDirection = false;
+                                    rightDirection = true;
+                                }
+                                else if ((bricks[this.y + 1, this.x].IsBroken == false || bricks[this.y + 1, this.x - 1].IsBroken == false) &&
+                                    (bricks[this.y - 1, this.x + 1].IsBroken == true && bricks[this.y, this.x + 1].IsBroken == true))
+                                {
+                                    rightDirection = true;
+                                }
+                                else if ((bricks[this.y + 1, this.x].IsBroken == true && bricks[this.y + 1, this.x - 1].IsBroken == true) &&
+                                   (bricks[this.y - 1, this.x + 1].IsBroken == false || bricks[this.y, this.x + 1].IsBroken == false))
+                                {
+                                    topDirection = false;
+                                }
+                                else
+                                {
+                                    rightDirection = true;
+                                }
                             }
                         }
 
                     }
-                    else
+                    else   //AKO TOPCHETO PYTUVA OTGORE-NADOLU  - TUK TRQBWA OSHTE RABOTA!!!!
                     {
-                        this.topDirection = true;
+                        this.topDirection = false;
 
                         if (this.rightDirection == true)
                         {
@@ -227,11 +303,7 @@ namespace ConsoleGame
                     }
 
 
-
-                    /*   KOD NA ILIANA
-                    this.topDirection = !this.topDirection;
-                    this.rightDirection = !this.rightDirection;
-                     */
+                
                 }
             }
             catch (Exception) { }
