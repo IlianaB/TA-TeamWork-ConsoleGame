@@ -115,14 +115,7 @@ namespace ConsoleGame
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Press M to enter menu.");
 
-                do
-                {
-                    ConsoleKeyInfo waitedKey = Console.ReadKey(true);
-                    if (waitedKey.Key == ConsoleKey.M)
-                    {
-                        ResetGame();
-                    }
-                } while (true);
+                GoBackToMenu();
             }
             else if (array[2] == true)
             {
@@ -161,14 +154,7 @@ namespace ConsoleGame
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Press M to enter menu.");
                 Console.ForegroundColor = ConsoleColor.White;
-                do
-                {
-                    ConsoleKeyInfo waitedKey = Console.ReadKey(true);
-                    if (waitedKey.Key == ConsoleKey.M)
-                    {
-                        ResetGame();
-                    }
-                } while (true);
+                GoBackToMenu();
             }
             else if (array[4] == true)
             {
@@ -354,21 +340,7 @@ ________,'      / \_// \ V /  __/ |
                     file.WriteLine(player.Score);
                 }
 
-                do
-                {
-                    ConsoleKeyInfo waitedKey = Console.ReadKey(true);
-                    if (waitedKey.Key == ConsoleKey.M)
-                    {
-                        ResetGame();
-                    }
-                    else if (waitedKey.Key == ConsoleKey.Escape)
-                    {
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.SetCursorPosition(WindowHeight / 2, 10);
-                        Environment.Exit(0);
-                    }
-                } while (true);
+                GoBackToMenu();
             }
         }
 
@@ -406,6 +378,11 @@ ________,'      / \_// \ V /  __/ |
             Console.WriteLine("Press M to enter menu.");
 
 
+            GoBackToMenu();
+        }
+
+        private static void GoBackToMenu()
+        {
             do
             {
                 ConsoleKeyInfo waitedKey = Console.ReadKey(true);
