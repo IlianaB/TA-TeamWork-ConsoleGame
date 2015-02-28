@@ -35,12 +35,12 @@ namespace ConsoleGame
 
             if (key.Key == ConsoleKey.LeftArrow && this.x > 0)
             {
-                this.x--;
+                this.x-=2;
             }
 
             if (key.Key == ConsoleKey.RightArrow && this.x + this.width < ConsoleGame.WindowWidth - 1)
             {
-                this.x++;
+                this.x+=2;
             }
 
             if (key.Key == ConsoleKey.P)
