@@ -64,7 +64,6 @@ namespace ConsoleGame
                         this.topDirection = true;
                         rightDirection = true;
                         this.y = y - 1;
-                        this.x = x + 1;
                     }
                     else
                     {
