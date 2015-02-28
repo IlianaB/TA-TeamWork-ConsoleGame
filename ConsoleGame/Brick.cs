@@ -8,6 +8,7 @@ namespace ConsoleGame
         private int y;
         private bool isBroken;
         private ConsoleColor color;
+        public static Type type = typeof(ConsoleColor);
 
         public bool IsBroken
         {

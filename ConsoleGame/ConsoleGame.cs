@@ -19,8 +19,8 @@ namespace ConsoleGame
         private static Pad pad = new Pad(WindowWidth / 2 - 3, WindowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(WindowWidth / 2 + 1, WindowHeight - 2, ConsoleColor.Red);
         private static Brick[,] bricks = new Brick[7, WindowWidth];
+        public static string[] colors = { "DarkGreen", "Green", "DarkBlue", "Blue", "DarkGray", "Gray" };
         private static Player player = new Player(0, 4);
-
         static void Main()
         {
             SetupGameField();
@@ -292,11 +292,13 @@ namespace ConsoleGame
 
         private static void GenerateBricks()
         {
+            Random changeColor = new Random();
             for (int y = 0; y < bricks.GetLength(0); y++)
             {
                 for (int x = 0; x < bricks.GetLength(1); x++)
                 {
-                    bricks[y, x] = new Brick(x, y, ConsoleColor.White);
+                    changeColor.Next(0, 5);
+                    bricks[y, x] = new Brick(x, y, (ConsoleColor)Enum.Parse(Brick.type, colors[changeColor.Next(0, 5)]));
                 }
             }
         }
@@ -322,7 +324,7 @@ ________,'      / \_// \ V /  __/ |
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.SetCursorPosition(0, 0);
                 Console.Write(gameOverTitle);
-
+                                                             
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(WindowWidth / 2 - 9, WindowHeight - 5);
                 Console.WriteLine("Your score is {0}!", player.Score);
