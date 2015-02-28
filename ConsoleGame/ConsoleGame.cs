@@ -52,17 +52,20 @@ namespace ConsoleGame
                 {
                     lines[currentSelectedItem] = false;
                     lines[--currentSelectedItem] = true;
+                    Console.Beep(333, 75);
+
                 }
                 else if (lines[4] == false && chosenLine.Key == ConsoleKey.DownArrow)
                 {
                     lines[currentSelectedItem] = false;
                     lines[++currentSelectedItem] = true;
+                    Console.Beep(333, 75);
                 }
                 else if (chosenLine.Key == ConsoleKey.Enter)
                 {
                     goIntoSelectedMenu(lines);
                 }
-                Console.Beep(333, 75);
+                
             }
 
         }
