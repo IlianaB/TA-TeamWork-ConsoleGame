@@ -13,6 +13,25 @@ namespace ConsoleGame
         private bool topDirection;
         private ConsoleColor color;
 
+        public int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+
+        public int Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+
+        public bool TopDirection
+        {
+            get { return topDirection; }
+            set { topDirection = value; }
+        }
+
         public Ball(int x, int y, ConsoleColor color)
         {
             this.x = x;
@@ -68,12 +87,11 @@ namespace ConsoleGame
                     {
                         if (player.Lives > 1)
                         {
-                            DrawLostLivesScreen(pad, player);
-
+                            ConsoleGame.DrawLostLivesScreen();
                         }
                         else
                         {
-                            DrawGameOverScreen();
+                            ConsoleGame.DrawGameOverScreen();
                         }
 
                     }
@@ -105,56 +123,15 @@ namespace ConsoleGame
                     {
                         if (player.Lives > 1)
                         {
-                            DrawLostLivesScreen(pad, player);
-
+                            ConsoleGame.DrawLostLivesScreen();
                         }
                         else
                         {
-
-                            DrawGameOverScreen();
+                            ConsoleGame.DrawGameOverScreen();
                         }
                     }
                 }
             }
-        }
-
-        private void DrawLostLivesScreen(Pad pad, Player player)
-        {
-            Draw('*');
-            Console.Beep(150, 350);
-            player.Lives--;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(ConsoleGame.WindowWidth / 3 - 1, ConsoleGame.WindowHeight / 2);
-            if (player.Lives == 1)
-            {
-                Console.Write("You have {0} life left", player.Lives);
-            }
-            else
-            {
-                Console.Write("You have {0} lives left", player.Lives);
-            }
-            Console.ForegroundColor = ConsoleColor.White;
-            Thread.Sleep(1500);
-            this.x = ConsoleGame.WindowWidth / 2;
-            this.y = ConsoleGame.WindowHeight - 2;
-            pad.X = ConsoleGame.WindowWidth / 2 - pad.Width / 2;
-            this.topDirection = true;
-            ConsoleGame.Play();
-        }
-
-        private void DrawGameOverScreen()
-        {
-            Draw('*');
-            string gameOver = "G A M E   O V E R";
-            Console.Beep(222, 200);
-            Console.Beep(200, 200);
-            Console.SetCursorPosition(ConsoleGame.WindowWidth / 2 - gameOver.Length / 2, ConsoleGame.WindowHeight / 2);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(gameOver);
-            Thread.Sleep(30);
-            Console.Beep(180, 200);
-            Console.Beep(130, 700);
-            ConsoleGame.over = true;
         }
 
         public void CheckBrickCollision(Brick[,] bricks, Player player)
@@ -170,7 +147,7 @@ namespace ConsoleGame
                         ConsoleGame.gameSpeed = ConsoleGame.InitialGameSpeed - ConsoleGame.gameLevel * 4;
                     }
 
-                    printScore(player);
+                    ConsoleGame.printScore();
                     bricks[this.y, this.x].IsBroken = true;
                     //KOD DRAGO
                     if (this.topDirection == true)
@@ -367,17 +344,6 @@ namespace ConsoleGame
                     }
                 }   
             }
-        }
-
-
-        public static void printScore(Player player)
-        {
-            Console.SetCursorPosition((Console.WindowWidth / 2) - 9, 0);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Score: {0} Level: {1}", player.Score, ConsoleGame.gameLevel);
-            Console.SetCursorPosition((Console.WindowWidth / 2) - 13, 1);
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("Press P to pause the game.");
         }
 
         public void ChangePosition()

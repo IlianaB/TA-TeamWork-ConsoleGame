@@ -129,9 +129,6 @@ namespace ConsoleGame
             Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 5);
             Console.WriteLine(@"Kiril Mihaylov, Petar Zubev");
             Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("Press M to enter menu.");
-            Console.ForegroundColor = ConsoleColor.White;
 
             GoBackToMenu();
         }
@@ -179,10 +176,6 @@ namespace ConsoleGame
                 Console.WriteLine("There are no High Scores yet!");
             }
 
-            Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("Press M to enter menu.");
-
             GoBackToMenu();
         }
 
@@ -225,7 +218,7 @@ namespace ConsoleGame
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            Ball.printScore(player);
+            printScore();
             Console.ForegroundColor = ConsoleColor.White;
             pad.Draw('▀');
             clearTop3Rows();
@@ -362,9 +355,6 @@ ________,'      / \_// \ V /  __/ |
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(WindowWidth / 2 - 9, WindowHeight - 5);
                 Console.WriteLine("Your score is {0}!", player.Score);
-                Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 19);
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("Press M to enter menu.");
 
                 try
                 {
@@ -398,6 +388,21 @@ ________,'      / \_// \ V /  __/ |
             }
         }
 
+        public static void DrawGameOverScreen()
+        {
+            ball.Draw('*');
+            string gameOver = "G A M E   O V E R";
+            Console.Beep(222, 200);
+            Console.Beep(200, 200);
+            Console.SetCursorPosition(WindowWidth / 2 - gameOver.Length / 2, WindowHeight / 2);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(gameOver);
+            Thread.Sleep(30);
+            Console.Beep(180, 200);
+            Console.Beep(130, 700);
+            over = true;
+        }
+
         private static void DrawInstructions()
         {
             string title = @"
@@ -427,16 +432,16 @@ ________,'      / \_// \ V /  __/ |
             Console.WriteLine("You have 4 lives. A broken brick gives a point.");
             Console.SetCursorPosition(WindowWidth / 2 - 22, 17);
             Console.WriteLine("For every 10 points collected, you level up.");
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 11, 19);
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("Press M to enter menu.");
-
 
             GoBackToMenu();
         }
 
         private static void GoBackToMenu()
         {
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 11, WindowHeight - 2);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("Press M to enter menu.");
+
             do
             {
                 ConsoleKeyInfo waitedKey = Console.ReadKey(true);
@@ -452,6 +457,40 @@ ________,'      / \_// \ V /  __/ |
                     Environment.Exit(0);
                 }
             } while (true);
+        }
+
+        public static void DrawLostLivesScreen()
+        {
+            ball.Draw('*');
+            Console.Beep(150, 350);
+            player.Lives--;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(WindowWidth / 3 - 1, WindowHeight / 2);
+            if (player.Lives == 1)
+            {
+                Console.Write("You have {0} life left", player.Lives);
+            }
+            else
+            {
+                Console.Write("You have {0} lives left", player.Lives);
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+            Thread.Sleep(1500);
+            ball.X = WindowWidth / 2;
+            ball.Y = WindowHeight - 2;
+            pad.X = WindowWidth / 2 - pad.Width / 2;
+            ball.TopDirection = true;
+            Play();
+        }
+
+        public static void printScore()
+        {
+            Console.SetCursorPosition((WindowWidth / 2) - 9, 0);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Score: {0} Level: {1}", player.Score, gameLevel);
+            Console.SetCursorPosition((WindowWidth / 2) - 13, 1);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("Press P to pause the game.");
         }
 
         private static void ResetGame()
