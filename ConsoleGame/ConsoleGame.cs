@@ -21,6 +21,7 @@ namespace ConsoleGame
         private static Brick[,] bricks = new Brick[9, WindowWidth-1];
         public static string[] colors = { "Green","Yellow" };
         private static Player player = new Player(0, 4);
+
         static void Main()
         {
             SetupGameField();
@@ -79,52 +80,7 @@ namespace ConsoleGame
             }
             else if (array[1] == true)
             {
-                string scoreTitle = @"
-            __                         
-           / _\ ___ ___  _ __ ___  ___ 
-           \ \ / __/ _ \| '__/ _ \/ __|
-           _\ \ (_| (_) | | |  __/\__ \
-           \__/\___\___/|_|  \___||___/
-";
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.SetCursorPosition(0, 0);
-                Console.Write(scoreTitle);
-                Console.ForegroundColor = ConsoleColor.White;
-
-                try
-                {
-                    string[] lines = File.ReadAllLines(HighscoresFile);
-
-                    var highscores = new List<int>();
-
-                    foreach (var line in lines)
-                    {
-                        highscores.Add(int.Parse(line));
-                    }
-
-                    highscores.Sort();
-                    highscores.Reverse();
-                    const int ViewedScoresCount = 5;
-
-                    // shows N scores if there are more than N records in the file, else it shows as many scores as the their total count
-                    for (int i = 0; i < (highscores.Count > ViewedScoresCount ? ViewedScoresCount : highscores.Count); i++)
-                    {
-                        Console.SetCursorPosition(WindowWidth / 2 - 6, 8 + 2 * i);
-                        Console.WriteLine("{0}. {1} points", i + 1, highscores[i]);
-                    }
-                }
-                catch (Exception)
-                {
-                    Console.SetCursorPosition(WindowWidth / 2 - 14, 10);
-                    Console.WriteLine("There are no High Scores yet!");
-                }
-
-                Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("Press M to enter menu.");
-
-                GoBackToMenu();
+                DrawScores();
             }
             else if (array[2] == true)
             {
@@ -132,38 +88,7 @@ namespace ConsoleGame
             }
             else if (array[3] == true)
             {
-                string aboutTitle = @"
-             _   _                 _   
-            /_\ | |__   ___  _   _| |_ 
-           //_\\| '_ \ / _ \| | | | __|
-          /  _  \ |_) | (_) | |_| | |_ 
-          \_/ \_/_.__/ \___/ \__,_|\__|
-";
-
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.SetCursorPosition(0, 0);
-                Console.Write(aboutTitle);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 13);
-                Console.WriteLine(@"The B-Breaker game was developed by TEAM IMP as a");
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 12);
-                Console.WriteLine(@"team project in the Telerik Academy C#2 course.");
-                Console.SetCursorPosition(WindowWidth / 2 - 15, WindowHeight - 10);
-                Console.WriteLine(@"The marvelous TEAM IMP:");
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 8);
-                Console.WriteLine(@"Iliana Bobeva, Lyuba Gerassimova");
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 7);
-                Console.WriteLine(@"Bistra Gospodinova, Dimitar Bakardzhiev");
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 6);
-                Console.WriteLine(@"Dragomir Tachev, Emo Penovski");
-                Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 5);
-                Console.WriteLine(@"Kiril Mihaylov, Petar Zubev");
-                Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("Press M to enter menu.");
-                Console.ForegroundColor = ConsoleColor.White;
-                GoBackToMenu();
+                DrawAbout();
             }
             else if (array[4] == true)
             {
@@ -172,6 +97,93 @@ namespace ConsoleGame
                 Console.SetCursorPosition(WindowHeight / 2, 10);
                 Environment.Exit(0);
             }
+        }
+
+        private static void DrawAbout()
+        {
+            string aboutTitle = @"
+             _   _                 _   
+            /_\ | |__   ___  _   _| |_ 
+           //_\\| '_ \ / _ \| | | | __|
+          /  _  \ |_) | (_) | |_| | |_ 
+          \_/ \_/_.__/ \___/ \__,_|\__|
+";
+
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(0, 0);
+            Console.Write(aboutTitle);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 13);
+            Console.WriteLine(@"The B-Breaker game was developed by TEAM IMP as a");
+            Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 12);
+            Console.WriteLine(@"team project in the Telerik Academy C#2 course.");
+            Console.SetCursorPosition(WindowWidth / 2 - 15, WindowHeight - 10);
+            Console.WriteLine(@"The marvelous TEAM IMP:");
+            Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 8);
+            Console.WriteLine(@"Iliana Bobeva, Lyuba Gerassimova");
+            Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 7);
+            Console.WriteLine(@"Bistra Gospodinova, Dimitar Bakardzhiev");
+            Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 6);
+            Console.WriteLine(@"Dragomir Tachev, Emo Penovski");
+            Console.SetCursorPosition(WindowWidth - 49, WindowHeight - 5);
+            Console.WriteLine(@"Kiril Mihaylov, Petar Zubev");
+            Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("Press M to enter menu.");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            GoBackToMenu();
+        }
+
+        private static void DrawScores()
+        {
+            string scoreTitle = @"
+            __                         
+           / _\ ___ ___  _ __ ___  ___ 
+           \ \ / __/ _ \| '__/ _ \/ __|
+           _\ \ (_| (_) | | |  __/\__ \
+           \__/\___\___/|_|  \___||___/
+";
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(0, 0);
+            Console.Write(scoreTitle);
+            Console.ForegroundColor = ConsoleColor.White;
+
+            try
+            {
+                string[] lines = File.ReadAllLines(HighscoresFile);
+
+                var highscores = new List<int>();
+
+                foreach (var line in lines)
+                {
+                    highscores.Add(int.Parse(line));
+                }
+
+                highscores.Sort();
+                highscores.Reverse();
+                const int ViewedScoresCount = 5;
+
+                // shows N scores if there are more than N records in the file, else it shows as many scores as the their total count
+                for (int i = 0; i < (highscores.Count > ViewedScoresCount ? ViewedScoresCount : highscores.Count); i++)
+                {
+                    Console.SetCursorPosition(WindowWidth / 2 - 6, 8 + 2 * i);
+                    Console.WriteLine("{0}. {1} points", i + 1, highscores[i]);
+                }
+            }
+            catch (Exception)
+            {
+                Console.SetCursorPosition(WindowWidth / 2 - 14, 10);
+                Console.WriteLine("There are no High Scores yet!");
+            }
+
+            Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("Press M to enter menu.");
+
+            GoBackToMenu();
         }
 
         private static void DrawMenu(int top, int left, bool[] array, string[] arrayStr)
