@@ -181,11 +181,11 @@ namespace ConsoleGame
                     {
                         if (rightDirection)
                         {
-                            if (this.y == 6)
+                            if (this.y == 8)
                             {
                                 topDirection = false;
                             }
-                            else if(this.y == 4 && this.x != 2)
+                            else if(this.y == 6 && this.x != 3)
                             {
                                 if (bricks[this.y + 1, this.x].IsBroken == false || bricks[this.y + 1, this.x + 1].IsBroken == false)
                                 {
@@ -197,7 +197,7 @@ namespace ConsoleGame
                                     topDirection = false;
                                 }      
                             }
-                            else if (this.x == 2)
+                            else if (this.x == 3)
                             {
                                 rightDirection = false;
                             }
@@ -224,14 +224,14 @@ namespace ConsoleGame
                                     rightDirection = false;
                                 }
                             }                            
-                        }
+                        } //
                         else
                         {
-                            if (this.y == 6)
+                            if (this.y == 8)
                             {
                                 topDirection = false;
                             }
-                            else if (this.y == 4 && this.x != 46)
+                            else if (this.y == 6 && this.x != 45)
                             {
                                 if (bricks[this.y + 1, this.x].IsBroken == false || bricks[this.y + 1, this.x - 1].IsBroken == false)
                                 {
@@ -243,7 +243,7 @@ namespace ConsoleGame
                                     topDirection = false;
                                 }
                             }
-                            else if (this.x == 46)
+                            else if (this.x == 45)
                             {
                                 rightDirection = true;
                             }
@@ -275,28 +275,97 @@ namespace ConsoleGame
                     }
                     else   //AKO TOPCHETO PYTUVA OTGORE-NADOLU  - TUK TRQBWA OSHTE RABOTA!!!!
                     {
-                        this.topDirection = false;
-
-                        if (this.rightDirection == true)
+                        if (rightDirection)
                         {
-                            if (bricks[this.y - 1, this.x - 1].IsBroken == false)
+                            if (this.y == 6)
                             {
-                                this.rightDirection = false;
+                                topDirection = true;
+                            }
+                            else if (this.y == 8 && this.x != 3)
+                            {
+                                if (bricks[this.y - 1, this.x].IsBroken == false || bricks[this.y - 1, this.x + 1].IsBroken == false)
+                                {
+                                    topDirection = true;
+                                    rightDirection = false;
+                                }
+                                else if (bricks[this.y - 1, this.x].IsBroken == true && bricks[this.y - 1, this.x + 1].IsBroken == true)
+                                {
+                                    topDirection = true;
+                                }
+                                else if (this.x == 3)
+                                {
+                                    rightDirection = false;
+                                }
                             }
                             else
                             {
-                                this.rightDirection = true;
+                                if ((bricks[this.y - 1, this.x].IsBroken == false || bricks[this.y - 1, this.x + 1].IsBroken == false) &&
+                                    (bricks[this.y + 1, this.x - 1].IsBroken == false || bricks[this.y, this.x - 1].IsBroken == false))
+                                {
+                                    topDirection = true;
+                                    rightDirection = false;
+                                }
+                                else if ((bricks[this.y - 1, this.x].IsBroken == false || bricks[this.y - 1, this.x + 1].IsBroken == false) &&
+                                    (bricks[this.y + 1, this.x - 1].IsBroken == true && bricks[this.y, this.x - 1].IsBroken == true))
+                                {
+                                    rightDirection = false;
+                                }
+                                else if ((bricks[this.y - 1, this.x].IsBroken == true && bricks[this.y - 1, this.x + 1].IsBroken == true) &&
+                                   (bricks[this.y + 1, this.x - 1].IsBroken == false || bricks[this.y, this.x - 1].IsBroken == false))
+                                {
+                                    topDirection = true;
+                                }
+                                else
+                                {
+                                    rightDirection = false;
+                                }
                             }
                         }
+
                         else
                         {
-                            if (bricks[this.y - 1, this.x + 1].IsBroken == false)
+                            if (this.y == 6)
                             {
-                                this.rightDirection = true;
+                                topDirection = true;
+                            }
+                            else if (this.y == 8 && this.x != 45)
+                            {
+                                if (bricks[this.y - 1, this.x].IsBroken == false || bricks[this.y - 1, this.x - 1].IsBroken == false)
+                                {
+                                    topDirection = true;
+                                    rightDirection = true;
+                                }
+                                else if (bricks[this.y - 1, this.x].IsBroken == true && bricks[this.y - 1, this.x - 1].IsBroken == true)
+                                {
+                                    topDirection = true;
+                                }
+                            }
+                            else if (this.x == 45)
+                            {
+                                rightDirection = true;
                             }
                             else
                             {
-                                this.rightDirection = false;
+                                if ((bricks[this.y - 1, this.x].IsBroken == false || bricks[this.y - 1, this.x - 1].IsBroken == false) &&
+                                    (bricks[this.y + 1, this.x + 1].IsBroken == false || bricks[this.y, this.x + 1].IsBroken == false))
+                                {
+                                    topDirection = true;
+                                    rightDirection = true;
+                                }
+                                else if ((bricks[this.y - 1, this.x].IsBroken == false || bricks[this.y - 1, this.x - 1].IsBroken == false) &&
+                                    (bricks[this.y + 1, this.x + 1].IsBroken == true && bricks[this.y, this.x + 1].IsBroken == true))
+                                {
+                                    rightDirection = true;
+                                }
+                                else if ((bricks[this.y - 1, this.x].IsBroken == true && bricks[this.y - 1, this.x - 1].IsBroken == true) &&
+                                   (bricks[this.y + 1, this.x + 1].IsBroken == false || bricks[this.y, this.x + 1].IsBroken == false))
+                                {
+                                    topDirection = true;
+                                }
+                                else
+                                {
+                                    rightDirection = true;
+                                }
                             }
                         }
                     }

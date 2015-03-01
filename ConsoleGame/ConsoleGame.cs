@@ -18,7 +18,7 @@ namespace ConsoleGame
 
         private static Pad pad = new Pad(WindowWidth / 2 - 3, WindowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(WindowWidth / 2 + 1, WindowHeight - 2, ConsoleColor.Red);
-        private static Brick[,] bricks = new Brick[7, WindowWidth];
+        private static Brick[,] bricks = new Brick[9, WindowWidth-1];
         public static string[] colors = { "Green","Yellow" };
         private static Player player = new Player(0, 4);
         static void Main()
@@ -276,7 +276,7 @@ namespace ConsoleGame
 
         private static void clearTop3Rows()
         {
-            for (int row = 3; row <= 6; row++)
+            for (int row = 3; row <= 8; row++)
             {
                 if (row == 3)
                 {
@@ -288,10 +288,12 @@ namespace ConsoleGame
                 bricks[row, 0].IsBroken = true;
                 bricks[row, 1].IsBroken = true;
                 bricks[row, 2].IsBroken = true;
+                bricks[row, 3].IsBroken = true;
+                bricks[row, 46].IsBroken = true;
                 bricks[row, 47].IsBroken = true;
                 bricks[row, 48].IsBroken = true;
             }
-            for (int row = 0; row <= 2; row++)
+            for (int row = 0; row <= 5; row++)
             {
                 for (int col = 0; col < bricks.GetLength(1); col++)
                 {
