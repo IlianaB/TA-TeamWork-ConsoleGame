@@ -159,7 +159,7 @@ namespace ConsoleGame
 
         public void CheckBrickCollision(Brick[,] bricks, Player player)
         {
-            if (this.y < 9) {
+            if (this.y < 9 && this.x < ConsoleGame.WindowWidth - 1 && this.x > 0) {
                 if (!bricks[this.y, this.x].IsBroken)
                 {
                     Console.Beep(497, 40);
