@@ -92,23 +92,32 @@ namespace ConsoleGame
                 Console.Write(scoreTitle);
                 Console.ForegroundColor = ConsoleColor.White;
 
-                string[] lines = File.ReadAllLines(HighscoresFile);
-                var highscores = new List<int>();
-
-                foreach (var line in lines)
+                try
                 {
-                    highscores.Add(int.Parse(line));
+                    string[] lines = File.ReadAllLines(HighscoresFile);
+
+                    var highscores = new List<int>();
+
+                    foreach (var line in lines)
+                    {
+                        highscores.Add(int.Parse(line));
+                    }
+
+                    highscores.Sort();
+                    highscores.Reverse();
+                    const int ViewedScoresCount = 5;
+
+                    // shows N scores if there are more than N records in the file, else it shows as many scores as the their total count
+                    for (int i = 0; i < (highscores.Count > ViewedScoresCount ? ViewedScoresCount : highscores.Count); i++)
+                    {
+                        Console.SetCursorPosition(WindowWidth / 2 - 6, 8 + 2 * i);
+                        Console.WriteLine("{0}. {1} points", i + 1, highscores[i]);
+                    }
                 }
-
-                highscores.Sort();
-                highscores.Reverse();
-                const int ViewedScoresCount = 5;
-
-                // shows N scores if there are more than N records in the file, else it shows as many scores as the their total count
-                for (int i = 0; i < (highscores.Count > ViewedScoresCount ? ViewedScoresCount : highscores.Count); i++)
+                catch (Exception)
                 {
-                    Console.SetCursorPosition(WindowWidth / 2 - 6, 8 + 2 * i);
-                    Console.WriteLine("{0}. {1} points", i + 1, highscores[i]);
+                    Console.SetCursorPosition(WindowWidth / 2 - 14, 10);
+                    Console.WriteLine("There are no High Scores yet!");
                 }
 
                 Console.SetCursorPosition(WindowWidth / 2 - 11, WindowHeight - 2);
@@ -345,14 +354,32 @@ ________,'      / \_// \ V /  __/ |
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Press M to enter menu.");
 
-                if (!File.Exists(HighscoresFile))
+                try
                 {
-                    File.Create(HighscoresFile);
+                    using (StreamWriter file = new StreamWriter(HighscoresFile, true))
+                    {
+                        file.WriteLine(player.Score);
+                    }
                 }
-
-                using (StreamWriter file = new StreamWriter(HighscoresFile, true))
+                catch (FileNotFoundException ex)
                 {
-                    file.WriteLine(player.Score);
+                    Console.WriteLine(ex.Message);
+                }
+                catch (DirectoryNotFoundException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
 
                 GoBackToMenu();
