@@ -33,7 +33,7 @@ namespace ConsoleGame
         public void ChangePosition(ConsoleKeyInfo key)
         {
 
-            if (key.Key == ConsoleKey.LeftArrow && this.x > 0)
+            if (key.Key == ConsoleKey.LeftArrow && this.x > 1)
             {
                 this.x--;
             }

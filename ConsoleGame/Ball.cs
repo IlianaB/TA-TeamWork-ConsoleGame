@@ -59,7 +59,7 @@ namespace ConsoleGame
                         rightDirection = true;
                         this.y = y - 1;
                     }
-                    else if (this.y == Console.WindowHeight - 1 && ((this.x == pad.X + 4) || (this.x == pad.X + 5)))
+                    else if (this.y == Console.WindowHeight - 1 && ((this.x == pad.X + 4)))
                     {
                         this.topDirection = true;
                         rightDirection = true;
@@ -96,7 +96,7 @@ namespace ConsoleGame
 
                     }
 
-                    else if (this.y == Console.WindowHeight - 1 && ((this.x == pad.X) || (this.x == pad.X - 1)))
+                    else if (this.y == Console.WindowHeight - 1 && ((this.x == pad.X)))
                     {
                         this.topDirection = true;
                         rightDirection = false;
@@ -329,12 +329,12 @@ namespace ConsoleGame
 
         public bool IsRightWallCollision()
         {
-            return this.x == ConsoleGame.WindowWidth;
+            return this.x == ConsoleGame.WindowWidth-1;
         }
 
         public bool IsLeftWallCollision()
         {
-            return this.x == -1;
+            return this.x == 0;
         }
 
         public bool IsBottomWallCollision()

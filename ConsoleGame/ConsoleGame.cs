@@ -19,7 +19,7 @@ namespace ConsoleGame
         private static Pad pad = new Pad(WindowWidth / 2 - 3, WindowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(WindowWidth / 2 + 1, WindowHeight - 2, ConsoleColor.Red);
         private static Brick[,] bricks = new Brick[7, WindowWidth];
-        public static string[] colors = { "DarkGreen", "Green", "DarkBlue", "Blue", "DarkGray", "Gray" };
+        public static string[] colors = { "Green","Yellow" };
         private static Player player = new Player(0, 4);
         static void Main()
         {
@@ -251,6 +251,16 @@ namespace ConsoleGame
                         bricks[y, x].Draw('@');
                     }
                 }
+                for (int row = 0; row <= Console.WindowHeight-2; row++)
+                {
+                    Console.SetCursorPosition(Console.WindowWidth-1, row);
+                    Console.Write("|");
+                }
+                for (int row = 0; row <= Console.WindowHeight - 2; row++)
+                {
+                    Console.SetCursorPosition(0, row);
+                    Console.Write("|");
+                }
             }
         }
 
@@ -277,6 +287,7 @@ namespace ConsoleGame
                 }
                 bricks[row, 0].IsBroken = true;
                 bricks[row, 1].IsBroken = true;
+                bricks[row, 2].IsBroken = true;
                 bricks[row, 47].IsBroken = true;
                 bricks[row, 48].IsBroken = true;
             }
@@ -297,8 +308,8 @@ namespace ConsoleGame
             {
                 for (int x = 0; x < bricks.GetLength(1); x++)
                 {
-                    changeColor.Next(0, 5);
-                    bricks[y, x] = new Brick(x, y, (ConsoleColor)Enum.Parse(Brick.type, colors[changeColor.Next(0, 5)]));
+                    changeColor.Next(0, 2);
+                    bricks[y, x] = new Brick(x, y, (ConsoleColor)Enum.Parse(Brick.type, colors[changeColor.Next(0, 2)]));
                 }
             }
         }
