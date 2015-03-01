@@ -159,8 +159,7 @@ namespace ConsoleGame
 
         public void CheckBrickCollision(Brick[,] bricks, Player player)
         {
-            try
-            {
+            if (this.y < 9) {
                 if (!bricks[this.y, this.x].IsBroken)
                 {
                     Console.Beep(497, 40);
@@ -182,7 +181,7 @@ namespace ConsoleGame
                             {
                                 topDirection = false;
                             }
-                            else if(this.y == 6 && this.x != 3)
+                            else if (this.y == 6 && this.x != 3)
                             {
                                 if (bricks[this.y + 1, this.x].IsBroken == false || bricks[this.y + 1, this.x + 1].IsBroken == false)
                                 {
@@ -192,7 +191,7 @@ namespace ConsoleGame
                                 else if (bricks[this.y + 1, this.x].IsBroken == true && bricks[this.y + 1, this.x + 1].IsBroken == true)
                                 {
                                     topDirection = false;
-                                }      
+                                }
                             }
                             else if (this.x == 3)
                             {
@@ -200,13 +199,13 @@ namespace ConsoleGame
                             }
                             else
                             {
-                                if( (bricks[this.y+1,this.x].IsBroken == false || bricks[this.y+1,this.x+1].IsBroken == false) &&
-                                    (bricks[this.y-1,this.x-1].IsBroken == false || bricks[this.y,this.x-1].IsBroken == false))
+                                if ((bricks[this.y + 1, this.x].IsBroken == false || bricks[this.y + 1, this.x + 1].IsBroken == false) &&
+                                    (bricks[this.y - 1, this.x - 1].IsBroken == false || bricks[this.y, this.x - 1].IsBroken == false))
                                 {
                                     topDirection = false;
                                     rightDirection = false;
                                 }
-                                else if( (bricks[this.y+1,this.x].IsBroken == false || bricks[this.y+1,this.x+1].IsBroken == false) &&
+                                else if ((bricks[this.y + 1, this.x].IsBroken == false || bricks[this.y + 1, this.x + 1].IsBroken == false) &&
                                     (bricks[this.y - 1, this.x - 1].IsBroken == true && bricks[this.y, this.x - 1].IsBroken == true))
                                 {
                                     rightDirection = false;
@@ -220,7 +219,7 @@ namespace ConsoleGame
                                 {
                                     rightDirection = false;
                                 }
-                            }                            
+                            }
                         } //
                         else
                         {
@@ -366,12 +365,8 @@ namespace ConsoleGame
                             }
                         }
                     }
-
-
-                
-                }
+                }   
             }
-            catch (Exception) { }
         }
 
 
