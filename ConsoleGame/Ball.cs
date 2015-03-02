@@ -19,7 +19,6 @@ namespace ConsoleGame
             set { x = value; }
         }
 
-
         public int Y
         {
             get { return y; }
@@ -93,7 +92,6 @@ namespace ConsoleGame
                         {
                             ConsoleGame.DrawGameOverScreen();
                         }
-
                     }
                 }
                 else
@@ -117,7 +115,6 @@ namespace ConsoleGame
                         this.topDirection = true;
                         rightDirection = false;
                         this.y = y - 1;
-
                     }
                     else
                     {
@@ -136,7 +133,8 @@ namespace ConsoleGame
 
         public void CheckBrickCollision(Brick[,] bricks, Player player)
         {
-            if (this.y < 9 && this.x < ConsoleGame.WindowWidth - 1 && this.x > 0) {
+            if (this.y < 9 && this.x < ConsoleGame.WindowWidth - 1 && this.x > 0)
+            {
                 if (!bricks[this.y, this.x].IsBroken)
                 {
                     Console.Beep(497, 40);
@@ -197,7 +195,7 @@ namespace ConsoleGame
                                     rightDirection = false;
                                 }
                             }
-                        } //
+                        } 
                         else
                         {
                             if (this.y == 8)
@@ -244,7 +242,6 @@ namespace ConsoleGame
                                 }
                             }
                         }
-
                     }
                     else   //AKO TOPCHETO PYTUVA OTGORE-NADOLU  - TUK TRQBWA OSHTE RABOTA!!!!
                     {
@@ -342,7 +339,7 @@ namespace ConsoleGame
                             }
                         }
                     }
-                }   
+                }
             }
         }
 
@@ -356,7 +353,7 @@ namespace ConsoleGame
 
         public bool IsRightWallCollision()
         {
-            return this.x == ConsoleGame.WindowWidth-1;
+            return this.x == ConsoleGame.WindowWidth - 1;
         }
 
         public bool IsLeftWallCollision()

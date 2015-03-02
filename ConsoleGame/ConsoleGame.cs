@@ -18,8 +18,8 @@ namespace ConsoleGame
 
         private static Pad pad = new Pad(WindowWidth / 2 - 3, WindowHeight - 1, ConsoleColor.White);
         private static Ball ball = new Ball(WindowWidth / 2 + 1, WindowHeight - 2, ConsoleColor.Red);
-        private static Brick[,] bricks = new Brick[9, WindowWidth-1];
-        public static string[] colors = { "Green","Yellow" };
+        private static Brick[,] bricks = new Brick[9, WindowWidth - 1];
+        public static string[] colors = { "Green", "Yellow" };
         private static Player player = new Player(0, 4);
 
         static void Main()
@@ -66,7 +66,7 @@ namespace ConsoleGame
                 {
                     goIntoSelectedMenu(lines);
                 }
-                
+
             }
 
         }
@@ -265,9 +265,9 @@ namespace ConsoleGame
                         bricks[y, x].Draw('@');
                     }
                 }
-                for (int row = 0; row <= Console.WindowHeight-2; row++)
+                for (int row = 0; row <= Console.WindowHeight - 2; row++)
                 {
-                    Console.SetCursorPosition(Console.WindowWidth-1, row);
+                    Console.SetCursorPosition(Console.WindowWidth - 1, row);
                     Console.Write("|");
                 }
                 for (int row = 0; row <= Console.WindowHeight - 2; row++)
@@ -351,7 +351,7 @@ ________,'      / \_// \ V /  __/ |
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.SetCursorPosition(0, 0);
                 Console.Write(gameOverTitle);
-                                                             
+
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(WindowWidth / 2 - 9, WindowHeight - 5);
                 Console.WriteLine("Your score is {0}!", player.Score);
