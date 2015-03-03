@@ -147,7 +147,7 @@ namespace ConsoleGame
 
                     ConsoleGame.printScore();
                     bricks[this.y, this.x].IsBroken = true;
-                    //KOD DRAGO
+
                     if (this.topDirection == true)
                     {
                         if (rightDirection)
@@ -195,7 +195,7 @@ namespace ConsoleGame
                                     rightDirection = false;
                                 }
                             }
-                        } 
+                        }
                         else
                         {
                             if (this.y == 8)
@@ -243,7 +243,7 @@ namespace ConsoleGame
                             }
                         }
                     }
-                    else   //AKO TOPCHETO PYTUVA OTGORE-NADOLU  - TUK TRQBWA OSHTE RABOTA!!!!
+                    else
                     {
                         if (rightDirection)
                         {
